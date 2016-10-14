@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using eventr.Models;
 using eventr.Providers;
 using eventr.Results;
+using Newtonsoft.Json;
 
 namespace eventr.Controllers
 {
@@ -373,7 +374,27 @@ namespace eventr.Controllers
             return Ok();
         }
 
-        protected override void Dispose(bool disposing)
+		// GET api/Account/Create
+		[AllowAnonymous]
+		[Route("Create")]
+		[HttpGet]
+		public async Task<IHttpActionResult> Create()
+		{
+			var doc = await DocumentDBRepository.testAdd();
+			return Ok();
+		}
+
+		// GET api/Account/Create
+		[AllowAnonymous]
+		[Route("GetLol")]
+		[HttpGet]
+		public async Task<IHttpActionResult> GetLol()
+		{
+			var doc = await DocumentDBRepository.testGet();
+			return Ok(doc);
+		}
+
+		protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
             {
