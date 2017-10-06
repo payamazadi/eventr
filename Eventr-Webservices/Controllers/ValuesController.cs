@@ -13,7 +13,7 @@ namespace Eventr_Webservices.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1", "valuex" };
         }
 
         // GET api/values/5
