@@ -2,3 +2,5 @@ Debug
 /Eventr/Eventr/Eventr.iOS/obj/iPhone/Debug
 /Eventr-Webservices/obj
 /Eventr-Webservices/Properties/PublishProfiles/eventr - Web Deploy.pubxml.user
+Eventr-Webservices/.vscode/tasks.json
+Eventr-Webservices/.vscode/launch.json
