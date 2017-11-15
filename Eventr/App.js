@@ -1,14 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { LinearGradient } from "expo";
+
 import PhoneInput from "./components/inputs/PhoneInput";
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text> THere should be something here</Text>
-        <PhoneInput />
-      </View>
+      <LinearGradient
+        colors={["#3023AE", "#5B38B9", "#C86DD7"]}
+        style={styles.gradient}
+      >
+        <View style={styles.container}>
+          <PhoneInput />
+        </View>
+      </LinearGradient>
     );
   }
 }
@@ -16,8 +22,11 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center"
+  },
+  gradient: {
+    height: "100%",
+    width: "100%"
   }
 });

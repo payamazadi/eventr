@@ -12,6 +12,7 @@ export default class PhoneInput extends React.Component {
       <View style={styles.container}>
         <TextInput
           ref="input1"
+          keyboardType="numeric"
           style={styles.phoneInput}
           onChangeText={text => {
             this.autoAdvance(text, "input2");
@@ -19,12 +20,18 @@ export default class PhoneInput extends React.Component {
         />
         <TextInput
           ref="input2"
+          keyboardType="numeric"
           style={styles.phoneInput}
           onChangeText={text => {
             this.autoAdvance(text, "input3");
           }}
         />
-        <TextInput ref="input3" style={styles.phoneInputLong} maxLength={4} />
+        <TextInput
+          ref="input3"
+          keyboardType="numeric"
+          style={styles.phoneInputLong}
+          maxLength={4}
+        />
       </View>
     );
   }
