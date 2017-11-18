@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo";
 
-import PhoneInput from "./components/inputs/PhoneInput";
+import { PhoneInput, SubmitButton } from "./components/inputs/";
 
 export default class App extends React.Component {
   render() {
@@ -13,6 +13,7 @@ export default class App extends React.Component {
       >
         <View style={styles.container}>
           <PhoneInput />
+          <SubmitButton />
         </View>
       </LinearGradient>
     );

@@ -29,7 +29,7 @@ export default class PhoneInput extends React.Component {
         <TextInput
           ref="input3"
           keyboardType="numeric"
-          style={styles.phoneInputLong}
+          style={[styles.phoneInput, styles.phoneInput_Long]}
           maxLength={4}
         />
       </View>
@@ -50,13 +50,7 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: "center"
   },
-  phoneInputLong: {
-    height: 40,
-    width: 80,
-    backgroundColor: "white",
-    borderRadius: 3,
-    margin: 5,
-    padding: 5,
-    textAlign: "center"
+  phoneInput_Long: {
+    width: 80
   }
 });
