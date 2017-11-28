@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 
-import { colors } from "../../shared";
+import { colors } from "shared";
 
 export default props => {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo";
 
-import { PhoneInput, SubmitButton } from "./components/inputs/";
+import { PhoneInput, SubmitButton } from "inputs";
 
 export default class App extends React.Component {
   render() {
