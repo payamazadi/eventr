@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 
-import Colors from "../../shared/colors";
+import { colors } from "../../shared";
 
 export default props => {
   return (
@@ -13,7 +13,7 @@ export default props => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.orange,
+    backgroundColor: colors.orange,
     borderRadius: 8,
     width: 200,
     height: 40,
