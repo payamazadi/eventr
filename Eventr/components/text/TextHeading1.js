@@ -3,14 +3,12 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { fonts } from "shared";
 
-export default class TextHeading1 extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.h1}>{this.props.text}</Text>
-      </View>
-    );
-  }
+export default props => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.h1}>{props.children}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
