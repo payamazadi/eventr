@@ -15,7 +15,7 @@ export default class App extends React.Component {
         style={styles.gradient}
       >
         <View style={styles.container}>
-          <TextHeading1 name="a">Welcome to Weaver</TextHeading1>
+          <TextHeading1>Welcome to Weaver</TextHeading1>
           <PhoneInput />
           <SubmitButton onPress = {() => Alert.alert("Next!")} />
         </View>

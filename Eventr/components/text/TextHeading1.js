@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   h1: {
     fontFamily: fonts.defaultFamily,
 	  color: "red",
-    fontSize: "25px",
+    fontSize: 35,
     backgroundColor: "transparent"
   }
 });
