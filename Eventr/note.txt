@@ -1,2 +1,0 @@
-npm WARN react-native-branch@2.0.0-beta.3 requires a peer of react@>=15.4.0 but none was installed.
-npm WARN lottie-react-native@1.1.1 requires a peer of react@>=15.3.1 but none was installed.

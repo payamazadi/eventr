@@ -1,3 +1,7 @@
 node_modules/
 .expo/
 npm-debug.*
+root-state/
+state
+pid
+log
