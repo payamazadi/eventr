@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo";
 
-import PhoneInput from "./components/inputs/PhoneInput";
-import TextHeading1 from "./components/text/TextHeading1";
+
+import { PhoneInput, SubmitButton } from "inputs";
 
 export default class App extends React.Component {
   render() {
@@ -14,7 +14,9 @@ export default class App extends React.Component {
       >
         <View style={styles.container}>
           <PhoneInput />
+
 	  <TextHeading1 />
+          <SubmitButton />
         </View>
       </LinearGradient>
     );
