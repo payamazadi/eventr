@@ -14,7 +14,7 @@ export default class App extends React.Component {
           <TextHeading1>Welcome to Weaver</TextHeading1>
           <PhoneInput />
           <ConfirmationInput />
-          <SubmitButton onPress={() => Alert.alert("Next!")} />
+          <SubmitButton onPress={() => Alert.alert("Next!")}>Confirm</SubmitButton>
         </View>
       </LinearGradient>;
   }

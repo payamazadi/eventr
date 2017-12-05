@@ -6,7 +6,7 @@ import { colors } from "shared";
 export default props => {
   return (
     <TouchableOpacity style={styles.button} onPress={props.onPress}>
-      <Text style={styles.text}>Submit</Text>
+      <Text style={styles.text}>{props.children}</Text>
     </TouchableOpacity>
   );
 };
