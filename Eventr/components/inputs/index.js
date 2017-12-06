@@ -4,5 +4,6 @@
 
 import PhoneInput from "./PhoneInput";
 import SubmitButton from "./SubmitButton";
+import ConfirmationInput from "./ConfirmationInput";
 
-export { PhoneInput, SubmitButton };
+export { PhoneInput, SubmitButton, ConfirmationInput };
