@@ -3,9 +3,10 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo";
 
 
-import { PhoneInput, ConfirmationInput, SubmitButton } from "inputs";
+import { PhoneInput, ConfirmationInput, SubmitButton, TextInput, SelectInput} from "inputs";
 import { TextHeading1 } from "text";
 import { colors } from "shared";
+
 
 export default class App extends React.Component {
   render() {
@@ -20,6 +21,8 @@ export default class App extends React.Component {
           <SubmitButton onPress={() => Alert.alert("Next!")} >
             Events around me
           </SubmitButton>
+          <TextInput label="LIST NAME"/>
+          <SelectInput label="TYPE"/>
         </View>
       </LinearGradient>;
   }
