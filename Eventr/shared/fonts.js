@@ -1,3 +1,4 @@
+import {Platform} from 'react-native'
 export default {
-  defaultFamily: "Helvetica",
+  defaultFamily: Platform.OS === "ios"?"Helvetica":"sans-serif-light",
 };
