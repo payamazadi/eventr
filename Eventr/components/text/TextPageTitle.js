@@ -12,8 +12,9 @@ export default props => {
 const styles = StyleSheet.create({
   text: {
     fontFamily: fonts.defaultFamily,
-	  color: colors.white,
-    fontSize: 30,
-    backgroundColor: colors.transparent
+	  color: colors.blue,
+    fontSize: 15,
+    backgroundColor: colors.transparent,
+    fontWeight: "bold"
   }
 });

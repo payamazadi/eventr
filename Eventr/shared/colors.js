@@ -4,5 +4,6 @@ export default {
   textGray: "#EFEFF4",
   white: "#FFFFFF",
   red: "#FF0000",
-  transparent: "rgba(0,0,0,0.0)"
+  transparent: "rgba(0,0,0,0.0)",
+  blue: "#0000FF"
 };

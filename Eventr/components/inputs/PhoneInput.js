@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
+import {colors} from "shared";
 
 export default class PhoneInput extends React.Component {
   autoAdvance(text, nextField) {
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   phoneInput: {
     height: 40,
     width: 60,
-    backgroundColor: "white",
+    backgroundColor: colors.white,
     borderRadius: 3,
     margin: 5,
     padding: 5,

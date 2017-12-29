@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: fonts.defaultFamily,
 	  color: colors.white,
-    fontSize: 30,
+    fontSize: 25,
     backgroundColor: colors.transparent
   }
 });

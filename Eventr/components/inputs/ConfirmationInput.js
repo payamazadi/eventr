@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View, Alert } from "react-native";
 
 export default class PhoneInput extends React.Component {
   autoAdvance(text, nextField) {
@@ -21,7 +21,9 @@ export default class PhoneInput extends React.Component {
         <TextInput ref="input4" keyboardType="numeric" style={styles.confirmationInput} onChangeText={text => {
             this.autoAdvance(text, "input5");
           }} />
-        <TextInput ref="input5" keyboardType="numeric" style={styles.confirmationInput} maxLength={1} />
+        <TextInput ref="input5" keyboardType="numeric" style={styles.confirmationInput} maxLength={1} onChangeText={text => {
+            Alert.alert("TODO: make this launch the 'continue' button? Pass that in somehow?");
+        }} />
       </View>;
   }
 }

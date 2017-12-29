@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.defaultFamily,
 	  color: colors.white,
     fontSize: 30,
-    backgroundColor: colors.transparent
+    backgroundColor: colors.transparent,
   }
 });
