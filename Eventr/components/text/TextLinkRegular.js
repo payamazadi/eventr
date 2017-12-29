@@ -14,8 +14,9 @@ export default props => {
 const styles = StyleSheet.create({
   text: {
     fontFamily: fonts.defaultFamily,
-	  color: colors.white,
-    fontSize: 30,
-    backgroundColor: "transparent"
+	  color: colors.blue,
+    fontSize: 15,
+    backgroundColor: "transparent",
+    textDecorationLine: "underline"
   }
 });

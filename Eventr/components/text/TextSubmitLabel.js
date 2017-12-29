@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-
 import { fonts, colors } from "shared";
 
 export default props => {
@@ -12,10 +11,9 @@ export default props => {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontFamily: fonts.defaultFamily,
-	  color: colors.white,
-    fontSize: 30,
-    backgroundColor: "transparent"
+  text:{
+    color: colors.white,
+    fontWeight: "600",
+    fontSize: 15
   }
 });

@@ -14,8 +14,8 @@ export default props => {
 const styles = StyleSheet.create({
   text: {
     fontFamily: fonts.defaultFamily,
-	  color: colors.white,
-    fontSize: 30,
+    color: colors.white,
+    fontSize: 12,
     backgroundColor: "transparent"
   }
 });

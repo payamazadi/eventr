@@ -1,9 +1,8 @@
 import React from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo";
-
 import { PhoneInput, ConfirmationInput, SubmitButton, TextInput, SelectInput} from "inputs";
-import { TextHeading1, TextCaptionNormal } from "text";
+import { TextTitle, TextSubtitle, TextHeading1, TextHeading2, TextHeading3, TextCaptionRegular, TextRegular, TextLinkRegular, TextPageTitle } from "text";
 import { colors } from "shared";
 
 
@@ -11,7 +10,10 @@ export default class App extends React.Component {
   render() {
     return <LinearGradient colors={colors.gradient} style={styles.gradient}>  
         <View style={styles.container}>
-          <TextHeading1>Welcome to Weaver</TextHeading1>
+          <TextCaptionRegular>English (US)</TextCaptionRegular>
+          <TextTitle>Welcome to Weaver</TextTitle>
+        {/*This doesn't stay centered after a certain length..*/}
+          <TextSubtitle>It's easy to start, just enter your phone number</TextSubtitle>
           <PhoneInput />
           <ConfirmationInput />
           <SubmitButton onPress={() => Alert.alert("Next!")} filled>
@@ -22,6 +24,12 @@ export default class App extends React.Component {
           </SubmitButton>
           <TextInput label="LIST NAME"/>
           <SelectInput label="TYPE"/>
+          <TextHeading1>Hello H1</TextHeading1>
+          <TextHeading2>Hello H2</TextHeading2>
+          <TextHeading3>Hello H3</TextHeading3>
+          <TextRegular>Regular text that we'll have everywhere</TextRegular>
+          <TextLinkRegular>Regular link text that we'll have everywhere</TextLinkRegular>
+          <TextPageTitle>Settings</TextPageTitle>
         </View>
       </LinearGradient>;
   }
@@ -29,21 +37,12 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flex: 1,
     alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "column",
-    backgroundColor: "blue"
+    justifyContent: "center"
   },
   gradient: {
     height: "100%",
     width: "100%"
-  },
-  international: {
-    flex: 0,
-    flexDirection: "row",
-    backgroundColor: "purple",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
   }
 });

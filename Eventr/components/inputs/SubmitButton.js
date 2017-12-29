@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
-
+import { TextSubmitLabel } from "text";
 import { colors } from "shared";
 
 export default props => {
   return (
     <TouchableOpacity style={[styles.button, props.filled? styles.button_filled:styles.button_empty]} onPress={props.onPress}>
-      <Text style={styles.text}>{props.children}</Text>
+      <TextSubmitLabel>{props.children}</TextSubmitLabel>
     </TouchableOpacity>
   );
 };
@@ -26,10 +26,5 @@ const styles = StyleSheet.create({
     borderColor: colors.white,
     borderWidth: 1,
     backgroundColor: colors.transparent
-  },
-  text: {
-    color: colors.white,
-    fontWeight: "600",
-    fontSize: 15
   }
 });

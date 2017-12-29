@@ -2,7 +2,16 @@
  * @providesModule text
  */
 
+import TextTitle from "./TextTitle";
+import TextSubtitle from "./TextSubtitle";
 import TextHeading1 from "./TextHeading1";
-import TextCaptionNormal from "./TextCaptionNormal";
+import TextHeading2 from "./TextHeading2";
+import TextHeading3 from "./TextHeading3";
+import TextCaptionRegular from "./TextCaptionRegular";
+import TextInputLabel from "./TextInputLabel";
+import TextSubmitLabel from "./TextSubmitLabel";
+import TextRegular from "./TextRegular";
+import TextLinkRegular from "./TextLinkRegular";
+import TextPageTitle from "./TextPageTitle";
 
-export { TextHeading1, TextCaptionNormal };
+export { TextTitle, TextSubtitle, TextHeading1, TextHeading2, TextHeading3, TextCaptionRegular, TextInputLabel, TextSubmitLabel, TextRegular, TextLinkRegular, TextPageTitle };

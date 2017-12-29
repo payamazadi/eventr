@@ -1,9 +1,11 @@
 import React from "react";
 import { StyleSheet, View, Text, Picker, Platform } from "react-native";
-import {colors} from "shared";
+import { TextInputLabel } from "text";
+import { colors } from "shared";
+
 export default props => {
     return <View style={styles.container}>
-        <Text style={styles.label}>{props.label}</Text>
+        <TextInputLabel>{props.label}</TextInputLabel>
         <Picker mode="dropdown" style={styles.selectInput} itemStyle={styles.selectItems}>
           <Picker.Item label="Shopping" />
           <Picker.Item label="Packing" />
@@ -15,11 +17,6 @@ export default props => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column"
-  },
-  label: {
-    backgroundColor: "transparent",
-    color: colors.white,
-    paddingLeft: 4
   },
   selectInput: {
     backgroundColor: colors.white,
