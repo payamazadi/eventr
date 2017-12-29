@@ -5,9 +5,7 @@ import { fonts, colors } from "shared";
 
 export default props => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{props.children}</Text>
-    </View>
+    <Text style={styles.text}>{props.children}</Text>
   );
 }
 
@@ -16,6 +14,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.defaultFamily,
 	  color: colors.white,
     fontSize: 30,
-    backgroundColor: "transparent"
+    backgroundColor: colors.transparent
   }
 });
