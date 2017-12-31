@@ -41,17 +41,18 @@ export default class Drawer extends React.Component {
 
 const styles = {
   container: {
-    width: "98%",
+    width: "95%",
     height: "95%",
     position: "absolute",
-    right: -8,
-    bottom: -8,
+    right: 0,
+    bottom: 0,
     zIndex: 10
   },
   gradient: {
     width: "100%",
     height: "100%",
-    borderRadius: 8,
+    borderTopLeftRadius: 8,
+    overflow: "hidden",
     paddingTop: 25
   }
 };
