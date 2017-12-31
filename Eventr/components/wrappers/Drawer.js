@@ -10,13 +10,16 @@ export default class Drawer extends React.Component {
 
                  componentWillReceiveProps(nextProps) {
                    if(nextProps.open){
-                     this.slideIn()
+                     this.slide(1)
+                   }
+                   else{
+                     this.slide(0)
                    }
                  }
 
-                 slideIn() {
+                 slide(target) {
                    Animated.timing(this.state.marginValue, {
-                     toValue: 1,
+                     toValue: target,
                      duration: 500,
                      easing: Easing.linear
                    }).start();

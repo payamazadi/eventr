@@ -21,8 +21,8 @@ export default class App extends React.Component {
     this.setState({fontLoaded: true});
   }
 
-  openDrawer() {
-    this.setState({drawerOpen: true});
+  toggleDrawer(open) {
+    this.setState({drawerOpen: open});
   }
 
   render() {
@@ -53,14 +53,22 @@ export default class App extends React.Component {
           </TextLinkRegular>
           <TextPageTitle>Settings</TextPageTitle>
           <SubmitButton onPress={() => {
-              this.openDrawer();
+              this.toggleDrawer(true);
             }} filled>
             Open the Drawer
           </SubmitButton>
           <Drawer open={this.state.drawerOpen}>
             <TextRegular>
-              {this.state.fontLoaded?<FontAwesome>{Icons.dashboard}</FontAwesome>:null} Dashboard
+              {this.state.fontLoaded ? (
+                <FontAwesome>{Icons.dashboard}</FontAwesome>
+              ) : null}{" "}
+              Dashboard
             </TextRegular>
+            <SubmitButton onPress={() => {
+                this.toggleDrawer(false);
+              }}>
+              Close the Drawer
+            </SubmitButton>
           </Drawer>
         </View>
       </LinearGradient>;
