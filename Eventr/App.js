@@ -27,7 +27,7 @@ import {
 import { colors } from "shared";
 import { Drawer } from "wrappers";
 
-let _container;
+let _navContainer;
 const Navigator = StackNavigator({
   Home: { screen: Home, header: null },
   Login: { screen: Login }
@@ -52,7 +52,7 @@ export default class App extends React.Component {
   render() {
     return <View colors={colors.gradient} style={styles.gradient}>
         <Navigator style={styles.container} ref={navigatorRef => {
-            _container = navigatorRef;
+            _navContainer = navigatorRef;
           }} />
         <View style={styles.navButton}>
           <SubmitButton onPress={() => {
@@ -71,7 +71,7 @@ export default class App extends React.Component {
           <SubmitButton onPress={() => {
               this.toggleDrawer(false);
               //this.props.navigation.navigate("Login");
-              _container.dispatch(NavigationActions.navigate({
+              _navContainer.dispatch(NavigationActions.navigate({
                   type: "Navigation/NAVIGATE",
                   routeName: "Login"
                 }));
