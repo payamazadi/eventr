@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { LinearGradient, Font } from "expo";
-import FontAwesome, { Icon } from "react-native-fontawesome";
+import FontAwesome, { Icons } from "react-native-fontawesome";
 import { Container, Header, Content, Badge } from 'native-base';
 import { PhoneInput, ConfirmationInput, SubmitButton, TextInput, SelectInput} from "inputs";
 import { TextTitle, TextSubtitle, TextHeading1, TextHeading2, TextHeading3, TextCaptionRegular, TextRegular, TextLinkRegular, TextPageTitle } from "text";
