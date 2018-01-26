@@ -4,6 +4,7 @@ import { LinearGradient, Font } from "expo";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 import { StackNavigator, NavigationActions } from "react-navigation";
 
+import NavigationHelper, { ROUTES } from "./NavigationHelper";
 import Home from './components/pages/Home';
 import Login from "./components/pages/Login";
 import {
@@ -52,7 +53,7 @@ export default class App extends React.Component {
   render() {
     return <View colors={colors.gradient} style={styles.gradient}>
         <Navigator style={styles.container} ref={navigatorRef => {
-            _navContainer = navigatorRef;
+            NavigationHelper.NAVIGATOR = navigatorRef;
           }} />
         <View style={styles.navButton}>
           <SubmitButton onPress={() => {
@@ -71,10 +72,7 @@ export default class App extends React.Component {
           <SubmitButton onPress={() => {
               this.toggleDrawer(false);
               //this.props.navigation.navigate("Login");
-              _navContainer.dispatch(NavigationActions.navigate({
-                  type: "Navigation/NAVIGATE",
-                  routeName: "Login"
-                }));
+              NavigationHelper.navigateTo(ROUTES.LOGIN);
             }}>
             other page
           </SubmitButton>
