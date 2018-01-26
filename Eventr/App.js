@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { LinearGradient, Font } from "expo";
 import FontAwesome, { Icons } from "react-native-fontawesome";

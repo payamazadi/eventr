@@ -2,6 +2,7 @@ import React from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { LinearGradient, Font } from "expo";
 import FontAwesome, { Icons } from "react-native-fontawesome";
+import { Container, Header, Content, Badge } from "native-base";
 
 import {
   PhoneInput,
@@ -42,8 +43,7 @@ export default class Login extends React.Component {
   }
 
   render() {
-    return (
-      <LinearGradient colors={colors.gradient} style={styles.gradient}>
+    return <LinearGradient colors={colors.gradient} style={styles.gradient}>
         <View style={styles.container}>
           <TextCaptionRegular>English (US)</TextCaptionRegular>
           <TextTitle>Welcome to Weaver</TextTitle>
@@ -69,9 +69,11 @@ export default class Login extends React.Component {
             Regular link text that we'll have everywhere
           </TextLinkRegular>
           <TextPageTitle>Settings</TextPageTitle>
+          <Badge>
+            <Text>2</Text>
+          </Badge>
         </View>
-      </LinearGradient>
-    );
+      </LinearGradient>;
   }
 }
 
