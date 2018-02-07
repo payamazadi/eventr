@@ -4,15 +4,13 @@ import { StyleSheet, Text, View } from "react-native";
 import { fonts, colors } from "shared";
 
 export default props => {
-  return (
-      <Text style={styles.text}>{props.children}</Text>
-  );
-}
+  return <Text style={styles.text}>{props.children}</Text>;
+};
 
 const styles = StyleSheet.create({
   text: {
     fontFamily: fonts.defaultFamily,
-	  color: colors.blue,
+    color: colors.linkBlue,
     fontSize: 15,
     backgroundColor: colors.transparent,
     textDecorationLine: "underline"
