@@ -6,5 +6,6 @@ export default {
   white: "#FFFFFF",
   red: "#FF0000",
   transparent: "rgba(0,0,0,0.0)",
-  blue: "#0000FF"
+  blue: "#0000FF",
+  linkBlue: "#54C7FC"
 };
