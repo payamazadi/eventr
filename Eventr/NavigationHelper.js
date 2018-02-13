@@ -2,7 +2,8 @@ import { NavigationActions } from "react-navigation";
 
 export const ROUTES = {
     HOME:"Home",
-    LOGIN: "Login"
+    LOGIN: "Login",
+    ATTENDEES: "Attendees"
 }
 
 export default class NavigationHelper {

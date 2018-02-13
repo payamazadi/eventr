@@ -2,6 +2,6 @@
  * @providesModule lists
  */
 
-import Attendees from "./Attendees";
+import AttendeeList from "./AttendeeList";
 
-export { Attendees };
+export { AttendeeList };

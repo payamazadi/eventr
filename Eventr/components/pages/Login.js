@@ -3,7 +3,8 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 import { LinearGradient, Font } from "expo";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 import { Container, Header, Content, Badge } from "native-base";
-
+import { StackNavigator, NavigationActions } from "react-navigation";
+import NavigationHelper, { ROUTES } from "../../NavigationHelper";
 import {
   PhoneInput,
   ConfirmationInput,
@@ -72,7 +73,17 @@ export default class Login extends React.Component {
           <Badge>
             <Text>2</Text>
           </Badge>
+          
+
+          <SubmitButton onPress={() => {
+              this.toggleDrawer(false);
+              //this.props.navigation.navigate("Login");
+              NavigationHelper.navigateTo(ROUTES.ATTENDEES);
+            }}>
+            other page
+          </SubmitButton>
         </View>
+
       </LinearGradient>;
   }
 }
