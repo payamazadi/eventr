@@ -1,6 +1,7 @@
 import React from "react";
+import { Alert } from "react-native";
 import { connect } from "react-redux";
-import Welcome from "../components/pages/Welcome";
+import { Welcome } from "pages";
 import * as verificationActions from "../actions/verification";
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 
@@ -15,16 +16,29 @@ class WelcomeContainer extends React.Component {
 
   render() {
     return (
-      <Welcome {...this.props} onSubmit={this.props.validatePhoneAction} />
+      <Welcome
+        {...this.props}
+        onSubmit={() => {
+          this.props.validatePhoneAction(this.props.phoneNumber);
+        }}
+        onFormFilled={this.props.savePhoneAction}
+      />
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { isPhoneVerified, isVerifyingPhone } = state.verification;
-  return { isPhoneVerified, isVerifyingPhone };
+  const {
+    isPhoneVerified,
+    isVerifyingPhone,
+    phoneNumber,
+    verificationError
+  } = state.verification;
+
+  return { isPhoneVerified, isVerifyingPhone, phoneNumber, verificationError };
 }
 
 export default connect(mapStateToProps, {
-  validatePhoneAction: verificationActions.validatePhone
+  validatePhoneAction: verificationActions.validatePhone,
+  savePhoneAction: verificationActions.savePhoneToState
 })(WelcomeContainer);

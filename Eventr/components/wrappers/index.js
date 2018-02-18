@@ -3,5 +3,6 @@
  */
 
 import Drawer from "./Drawer";
+import TransparentOverlay from "./TransparentOverlay";
 
-export { Drawer };
+export { Drawer, TransparentOverlay };
