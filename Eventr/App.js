@@ -10,6 +10,7 @@ import NavigationHelper from "./NavigationHelper";
 
 import Welcome from "./containers/Welcome";
 import Confirmation from "./containers/Confirmation";
+import Attendees from "./components/pages/Attendees";
 
 import NavigationDrawer from "./containers/NavigationDrawer";
 import { colors } from "shared";

@@ -34,7 +34,7 @@ class NavigationDrawer extends React.Component {
           onPress={() => {
             this.props.closeDrawerAction();
             //this.props.navigation.navigate("Login");
-            NavigationHelper.navigateTo(ROUTES.WELCOME);
+            NavigationHelper.navigateTo(ROUTES.ATTENDEES);
           }}
         >
           other page
