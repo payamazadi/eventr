@@ -10,6 +10,7 @@ import NavigationHelper from "./NavigationHelper";
 
 import Welcome from "./containers/Welcome";
 import Confirmation from "./containers/Confirmation";
+import RegistrationComplete from "./containers/RegistrationComplete";
 
 import NavigationDrawer from "./containers/NavigationDrawer";
 import { colors } from "shared";
@@ -18,7 +19,8 @@ let _navContainer;
 const store = configureStore();
 const Navigator = StackNavigator({
   Welcome: { screen: Welcome },
-  Confirmation: { screen: Confirmation }
+  Confirmation: { screen: Confirmation },
+  RegistrationComplete: { screen: RegistrationComplete }
 });
 
 export default class App extends React.Component {

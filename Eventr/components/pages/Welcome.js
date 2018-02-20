@@ -3,7 +3,8 @@ import { StyleSheet, View, Image } from "react-native";
 import { LinearGradient, Font } from "expo";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 import { Container, Header, Content, Badge } from "native-base";
-
+import { TransparentOverlay } from "wrappers";
+import { Logo } from "common";
 import { PhoneInput, SubmitButton } from "inputs";
 import {
   TextTitle,
@@ -17,15 +18,17 @@ export default class Welcome extends React.Component {
   static navigationOptions = { header: null };
 
   render() {
-    const { onSubmit } = this.props;
+    const {
+      onSubmit,
+      isVerifyingPhone,
+      onFormFilled,
+      verificationError
+    } = this.props;
 
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
         <View style={styles.container}>
-          <Image
-            style={styles.logo}
-            source={require("../../assets/WeaverLogo.png")}
-          />
+          <Logo />
           <TextTitle>Welcome to Weaver</TextTitle>
 
           <TextSubtitle style={styles.centerText}>
@@ -35,9 +38,14 @@ export default class Welcome extends React.Component {
             (We are sending you an SMS to verify you)
           </TextCaptionRegular>
           <View style={styles.padded}>
-            <PhoneInput />
+            <PhoneInput onComplete={onFormFilled} />
           </View>
           <View style={styles.padded}>
+            {verificationError && (
+              <TextCaptionRegular>
+                {verificationError.toString()}
+              </TextCaptionRegular>
+            )}
             <SubmitButton onPress={() => onSubmit()} filled>
               Sign Up
             </SubmitButton>
@@ -46,6 +54,7 @@ export default class Welcome extends React.Component {
             <TextLinkRegular>Skip Sign Up and go to Event</TextLinkRegular>
           </View>
         </View>
+        <TransparentOverlay show={isVerifyingPhone} />
       </LinearGradient>
     );
   }
@@ -61,11 +70,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%"
   },
-  logo: {
-    width: 200,
-    height: 132,
-    marginBottom: 28
-  },
+
   centerText: {
     textAlign: "center"
   },

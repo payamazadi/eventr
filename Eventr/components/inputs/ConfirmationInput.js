@@ -8,23 +8,48 @@ export default class PhoneInput extends React.Component {
     }
   }
   render() {
-    return <View style={styles.container}>
-        <TextInput ref="input1" keyboardType="numeric" style={styles.confirmationInput} onChangeText={text => {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          ref="input1"
+          keyboardType="numeric"
+          style={styles.confirmationInput}
+          onChangeText={text => {
             this.autoAdvance(text, "input2");
-          }} />
-        <TextInput ref="input2" keyboardType="numeric" style={styles.confirmationInput} onChangeText={text => {
+          }}
+        />
+        <TextInput
+          ref="input2"
+          keyboardType="numeric"
+          style={styles.confirmationInput}
+          onChangeText={text => {
             this.autoAdvance(text, "input3");
-          }} />
-        <TextInput ref="input3" keyboardType="numeric" style={styles.confirmationInput} onChangeText={text => {
+          }}
+        />
+        <TextInput
+          ref="input3"
+          keyboardType="numeric"
+          style={styles.confirmationInput}
+          onChangeText={text => {
             this.autoAdvance(text, "input4");
-          }} />
-        <TextInput ref="input4" keyboardType="numeric" style={styles.confirmationInput} onChangeText={text => {
+          }}
+        />
+        <TextInput
+          ref="input4"
+          keyboardType="numeric"
+          style={styles.confirmationInput}
+          onChangeText={text => {
             this.autoAdvance(text, "input5");
-          }} />
-        <TextInput ref="input5" keyboardType="numeric" style={styles.confirmationInput} maxLength={1} onChangeText={text => {
-            Alert.alert("TODO: make this launch the 'continue' button? Pass that in somehow?");
-        }} />
-      </View>;
+          }}
+        />
+        <TextInput
+          ref="input5"
+          keyboardType="numeric"
+          style={styles.confirmationInput}
+          maxLength={1}
+        />
+      </View>
+    );
   }
 }
 
