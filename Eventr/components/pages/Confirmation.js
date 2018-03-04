@@ -5,7 +5,7 @@ import FontAwesome, { Icons } from "react-native-fontawesome";
 import { Container, Header, Content, Badge } from "native-base";
 import { TransparentOverlay } from "wrappers";
 import { ConfirmationInput, SubmitButton } from "inputs";
-import { TextTitle, TextSubtitle } from "text";
+import { TextTitle, TextSubtitle, TextCaptionRegular } from "text";
 import { colors } from "shared";
 import { Logo } from "common";
 
@@ -13,7 +13,12 @@ export default class Confirmation extends React.Component {
   static navigationOptions = { header: null };
 
   render() {
-    const { onSubmit, isVerifyingToken } = this.props;
+    const {
+      onSubmit,
+      isVerifyingToken,
+      verificationError,
+      onFormFilled
+    } = this.props;
 
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
@@ -25,9 +30,14 @@ export default class Confirmation extends React.Component {
             Enter Confirmation Code
           </TextSubtitle>
           <View style={styles.padded}>
-            <ConfirmationInput />
+            <ConfirmationInput onComplete={onFormFilled} />
           </View>
           <View style={styles.padded}>
+            {verificationError && (
+              <TextCaptionRegular>
+                {verificationError.toString()}
+              </TextCaptionRegular>
+            )}
             <SubmitButton onPress={() => onSubmit()} filled>
               Confirm
             </SubmitButton>
