@@ -21,3 +21,15 @@ export function validateTokenService(token) {
     }, 1000);
   });
 }
+
+export function getEventService(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (id) {
+        resolve({ name: "EVENT" });
+      } else {
+        reject(new Error("id invalid or not present"));
+      }
+    }, 1000);
+  });
+}
