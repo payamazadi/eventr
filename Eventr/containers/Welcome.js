@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, AsyncStorage } from "react-native";
+import { AsyncStorage } from "react-native";
 import { connect } from "react-redux";
 import { Welcome } from "pages";
 import * as verificationActions from "../actions/verification";
@@ -14,7 +14,6 @@ class WelcomeContainer extends React.Component {
   }
   componentDidMount() {
     AsyncStorage.getItem("validated").then(isValidated => {
-      Alert.alert(isValidated);
       if (isValidated === "true") {
         NavigationHelper.navigateTo(ROUTES.REGISTRATION_COMPLETE);
       }
