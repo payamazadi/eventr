@@ -49,7 +49,7 @@ export default connect(mapStateToProps, {
 
   componentDidMount() {
     //this would come from the navigation props
-    this.props.attendeeListLoad(1);
+    this.props.attendeeListLoad(2);
   }
 
   render() {
@@ -65,6 +65,8 @@ function mapStateToProps(state) {
     attendeeListData
   } = state.attendees;
 
+  if(attendeeListData === null)
+    return { attendeeListId };
   return { attendeeListId, attendeeListData };
 }
 

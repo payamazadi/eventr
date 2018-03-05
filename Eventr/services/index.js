@@ -14,8 +14,27 @@ export function loadAttendeeListData(eventId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (eventId) {
-        resolve({attendeeListId: 1, attendeeListData: 
-          /*[{id: 5, name: "poooooo"}]*/ "kaka"
+        resolve({attendeeListId: eventId, attendeeListData: 
+          [
+            {
+              name: "Brendan Cass",
+              avatar: "brendan.jpg",
+              attending: 1,
+              icon: "md-checkmark-circle"
+            },
+            {
+              name: "Payam Azadi",
+              avatar: "payam.jpg",
+              attending: 2,
+              icon: "md-warning"
+            },
+            {
+              name: "Steven Ayers",
+              avatar: "ayers.jpg",
+              attending: 3,
+              icon: "md-close"
+            }
+          ]
         });
       } else {
         reject(new Error("invalid event ID or error"));

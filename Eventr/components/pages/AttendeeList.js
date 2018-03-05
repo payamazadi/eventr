@@ -1,13 +1,13 @@
 import React from "react";
 import FontAwesome, { Icons } from "react-native-fontawesome";
-import { Container, Header, Body, Content, List, ListItem, Left, Icon } from "native-base";
+import { Container, Header, Body, Content, List, ListItem, Left, Icon, Text } from "native-base";
 import { TransparentOverlay } from "wrappers";
 import { TextRegular } from "text";
 import { Logo } from "common";
 
 export default class AttendeeList extends React.Component {
   static navigationOptions = { header: null };
-  static defaultProps = { attendeeListData: [{name: "wat"}] }
+  static defaultProps = { attendeeListData: [] }
 
   render() {
     const {
@@ -22,7 +22,18 @@ export default class AttendeeList extends React.Component {
 
         <Content>
           
-          <TextRegular>{attendeeListData[0].name}</TextRegular>
+          <List dataArray={attendeeListData}
+                renderRow={(item) =>
+                  <ListItem icon>
+                    <Left>
+                      <Icon name={item.icon} />
+                    </Left>
+                    <Body>
+                      <Text>{item.name}</Text>
+                    </Body>
+                  </ListItem>
+                }>
+            </List>
         </Content>
         <TransparentOverlay show={false} />
       </Container>
