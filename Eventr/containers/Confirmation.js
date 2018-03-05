@@ -15,16 +15,26 @@ class ConfirmationContainer extends React.Component {
 
   render() {
     return (
-      <Confirmation {...this.props} onSubmit={this.props.validateTokenAction} />
+      <Confirmation
+        {...this.props}
+        onSubmit={() => this.props.validateTokenAction(this.props.token)}
+        onFormFilled={this.props.saveTokenAction}
+      />
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { isTokenVerified, isVerifyingToken } = state.verification;
-  return { isTokenVerified, isVerifyingToken };
+  const {
+    isTokenVerified,
+    isVerifyingToken,
+    verificationError,
+    token
+  } = state.verification;
+  return { isTokenVerified, isVerifyingToken, verificationError, token };
 }
 
 export default connect(mapStateToProps, {
-  validateTokenAction: verificationActions.validateToken
+  validateTokenAction: verificationActions.validateToken,
+  saveTokenAction: verificationActions.saveTokenToState
 })(ConfirmationContainer);

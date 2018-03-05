@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert } from "react-native";
+import { AsyncStorage } from "react-native";
 import { connect } from "react-redux";
 import { Welcome } from "pages";
 import * as verificationActions from "../actions/verification";
@@ -7,6 +7,18 @@ import NavigationHelper, { ROUTES } from "../NavigationHelper";
 
 class WelcomeContainer extends React.Component {
   static navigationOptions = { header: null };
+
+  componentWillMount() {
+    //AsyncStorage.removeItem("validated");
+    //AsyncStorage.setItem("validated", "true");
+  }
+  componentDidMount() {
+    AsyncStorage.getItem("validated").then(isValidated => {
+      if (isValidated === "true") {
+        NavigationHelper.navigateTo(ROUTES.REGISTRATION_COMPLETE);
+      }
+    });
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isPhoneVerified) {

@@ -1,13 +1,24 @@
 import React from "react";
 import { StyleSheet, TextInput, View, Alert } from "react-native";
 
-export default class PhoneInput extends React.Component {
+export default class ConfirmationInput extends React.Component {
+  state = { part1: "", part2: "", part3: "", part4: "" };
   autoAdvance(text, nextField) {
     if (text.length === 1) {
       this.refs[nextField].focus();
     }
   }
+  onFormFilled(text, action) {
+    const token =
+      this.state.part1 +
+      this.state.part2 +
+      this.state.part3 +
+      this.state.part4 +
+      text;
+    action(token);
+  }
   render() {
+    const { onComplete } = this.props;
     return (
       <View style={styles.container}>
         <TextInput
@@ -15,6 +26,7 @@ export default class PhoneInput extends React.Component {
           keyboardType="numeric"
           style={styles.confirmationInput}
           onChangeText={text => {
+            this.setState({ part1: text });
             this.autoAdvance(text, "input2");
           }}
         />
@@ -23,6 +35,7 @@ export default class PhoneInput extends React.Component {
           keyboardType="numeric"
           style={styles.confirmationInput}
           onChangeText={text => {
+            this.setState({ part2: text });
             this.autoAdvance(text, "input3");
           }}
         />
@@ -31,6 +44,7 @@ export default class PhoneInput extends React.Component {
           keyboardType="numeric"
           style={styles.confirmationInput}
           onChangeText={text => {
+            this.setState({ part3: text });
             this.autoAdvance(text, "input4");
           }}
         />
@@ -39,6 +53,7 @@ export default class PhoneInput extends React.Component {
           keyboardType="numeric"
           style={styles.confirmationInput}
           onChangeText={text => {
+            this.setState({ part4: text });
             this.autoAdvance(text, "input5");
           }}
         />
@@ -47,6 +62,9 @@ export default class PhoneInput extends React.Component {
           keyboardType="numeric"
           style={styles.confirmationInput}
           maxLength={1}
+          onChangeText={text => {
+            this.onFormFilled(text, onComplete);
+          }}
         />
       </View>
     );
