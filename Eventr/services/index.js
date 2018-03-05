@@ -9,3 +9,15 @@ export function validatePhoneService(phoneNumber) {
     }, 1000);
   });
 }
+
+export function loadAttendeeListData(eventId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (eventId) {
+        resolve({attendeeListId: 1, attendeeListData: "lalal"});
+      } else {
+        reject(new Error("invalid event ID or error"));
+      }
+    }, 8000);
+  });
+}

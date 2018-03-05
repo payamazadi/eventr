@@ -11,6 +11,7 @@ import NavigationHelper from "./NavigationHelper";
 import Welcome from "./containers/Welcome";
 import Confirmation from "./containers/Confirmation";
 import RegistrationComplete from "./containers/RegistrationComplete";
+import AttendeeList from "./containers/AttendeeList";
 
 import NavigationDrawer from "./containers/NavigationDrawer";
 import { colors } from "shared";
@@ -18,6 +19,7 @@ import { colors } from "shared";
 let _navContainer;
 const store = configureStore();
 const Navigator = StackNavigator({
+  AttendeeList: { screen: AttendeeList },
   Welcome: { screen: Welcome },
   Confirmation: { screen: Confirmation },
   RegistrationComplete: { screen: RegistrationComplete }
