@@ -11,7 +11,9 @@ class RegistrationCompleteContainer extends React.Component {
     return (
       <RegistrationComplete
         {...this.props}
-        onSubmit={this.props.openDrawerAction}
+        onSubmit={() => {
+          NavigationHelper.navigateTo(ROUTES.EVENT, { id: 1 });
+        }}
       />
     );
   }

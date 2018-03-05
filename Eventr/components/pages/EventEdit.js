@@ -1,20 +1,13 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { LinearGradient } from "expo";
-
-import { Container, Header, Content, Badge } from "native-base";
 import { TransparentOverlay } from "wrappers";
-import { Logo } from "common";
-import { PhoneInput, SubmitButton } from "inputs";
-import {
-  TextTitle,
-  TextSubtitle,
-  TextCaptionRegular,
-  TextLinkRegular
-} from "text";
+
+import { SubmitButton } from "inputs";
+import { TextTitle, TextSubtitle, TextCaptionRegular } from "text";
 import { colors } from "shared";
 
-export default class Welcome extends React.Component {
+export default class EventEdit extends React.Component {
   static navigationOptions = { header: null };
 
   render() {

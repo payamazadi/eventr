@@ -1,39 +1,32 @@
 import React from "react";
-import { AsyncStorage } from "react-native";
 import { connect } from "react-redux";
-import { Welcome } from "pages";
-import * as verificationActions from "../actions/verification";
-import NavigationHelper, { ROUTES } from "../NavigationHelper";
+import { EventDisplay, EventEdit } from "pages";
+import * as eventActions from "../actions/event";
 
-class WelcomeContainer extends React.Component {
+class EventContainer extends React.Component {
   static navigationOptions = { header: null };
 
   componentWillMount() {
-    //AsyncStorage.removeItem("validated");
-    //AsyncStorage.setItem("validated", "true");
-  }
-  componentDidMount() {
-    AsyncStorage.getItem("validated").then(isValidated => {
-      if (isValidated === "true") {
-        NavigationHelper.navigateTo(ROUTES.REGISTRATION_COMPLETE);
-      }
-    });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.isPhoneVerified) {
-      NavigationHelper.navigateTo(ROUTES.CONFIRMATION);
+    const { params } = this.props.navigation.state;
+    if (params.id) {
+      this.props.getEventAction(params.id);
     }
   }
 
   render() {
-    return (
-      <Welcome
+    return this.props.isEditingEvent ? (
+      <EventEdit
         {...this.props}
-        onSubmit={() => {
-          this.props.validatePhoneAction(this.props.phoneNumber);
+        saveAction={() => {
+          this.props.setEditingAction(false);
         }}
-        onFormFilled={this.props.savePhoneAction}
+      />
+    ) : (
+      <EventDisplay
+        {...this.props}
+        editButtonAction={() => {
+          this.props.setEditingAction(true);
+        }}
       />
     );
   }
@@ -41,16 +34,16 @@ class WelcomeContainer extends React.Component {
 
 function mapStateToProps(state) {
   const {
-    isPhoneVerified,
-    isVerifyingPhone,
-    phoneNumber,
-    verificationError
-  } = state.verification;
+    isLoadingEvent,
+    isEditingEvent,
+    eventLoadingError,
+    eventData
+  } = state.event;
 
-  return { isPhoneVerified, isVerifyingPhone, phoneNumber, verificationError };
+  return { isLoadingEvent, isEditingEvent, eventLoadingError, eventData };
 }
 
 export default connect(mapStateToProps, {
-  validatePhoneAction: verificationActions.validatePhone,
-  savePhoneAction: verificationActions.savePhoneToState
-})(WelcomeContainer);
+  getEventAction: eventActions.getEvent,
+  setEditingAction: eventActions.setEventEdit
+})(EventContainer);

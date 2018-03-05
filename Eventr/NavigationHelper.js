@@ -4,7 +4,8 @@ export const ROUTES = {
   HOME: "Home",
   WELCOME: "Welcome",
   CONFIRMATION: "Confirmation",
-  REGISTRATION_COMPLETE: "RegistrationComplete"
+  REGISTRATION_COMPLETE: "RegistrationComplete",
+  EVENT: "Event"
 };
 
 export default class NavigationHelper {
