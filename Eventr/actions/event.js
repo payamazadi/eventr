@@ -34,4 +34,11 @@ function getEvent(id) {
   };
 }
 
-export { getEvent };
+function setEventEdit(isEditing) {
+  return {
+    type: ACTIONS.SET_EVENT_EDITING,
+    payload: isEditing
+  };
+}
+
+export { getEvent, setEventEdit };

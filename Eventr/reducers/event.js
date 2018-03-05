@@ -19,6 +19,11 @@ function event(state = INITIAL_STATE, action) {
         isLoadingEvent: false,
         eventLoadingError: action.payload
       };
+    case ACTIONS.SET_EVENT_EDITING:
+      return {
+        ...state,
+        isEditingEvent: action.payload
+      };
     default:
       return state;
   }
