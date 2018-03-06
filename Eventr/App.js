@@ -19,8 +19,8 @@ import { colors } from "shared";
 let _navContainer;
 const store = configureStore();
 const Navigator = StackNavigator({
-  AttendeeList: { screen: AttendeeList },
   Welcome: { screen: Welcome },
+  AttendeeList: { screen: AttendeeList },
   Confirmation: { screen: Confirmation },
   RegistrationComplete: { screen: RegistrationComplete }
 });

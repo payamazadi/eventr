@@ -10,7 +10,7 @@ export function validatePhoneService(phoneNumber) {
   });
 }
 
-export function loadAttendeeListData(eventId) {
+export function attendeeListLoadData(eventId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (eventId) {
@@ -54,4 +54,3 @@ export function validateTokenService(token) {
     }, 1000);
   });
 }
->>>>>>> master

@@ -1,5 +1,5 @@
 import { ACTIONS } from "../shared/actionTypes";
-import { loadAttendeeListData } from "../services";
+import { attendeeListLoadData } from "../services";
 
 function attendeeListLoadStart() {
   return {
@@ -26,7 +26,7 @@ function attendeeListLoad(eventId) {
     dispatch(attendeeListLoadStart());
     //pretending to be async here
 
-    let response = loadAttendeeListData(eventId);
+    let response = attendeeListLoadData(eventId);
 
     response.then(response => {
       var payload = {attendeeListId: response.attendeeListId, attendeeListData: response.attendeeListData };

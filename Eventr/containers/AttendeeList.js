@@ -6,49 +6,10 @@ import { attendeeListLoad } from "../actions/attendees";
 
 
 class AttendeeListContainer extends React.Component {
-  /*
-  static navigationOptions = { header: null };
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.isPhoneVerified) {
-      NavigationHelper.navigateTo(ROUTES.CONFIRMATION);
-    }
-  }
-
-  render() {
-    return (
-      <Welcome
-        {...this.props}
-        onSubmit={() => {
-          this.props.validatePhoneAction(this.props.phoneNumber);
-        }}
-        onFormFilled={this.props.savePhoneAction}
-      />
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  const {
-    isPhoneVerified,
-    isVerifyingPhone,
-    phoneNumber,
-    verificationError
-  } = state.verification;
-
-  return { isPhoneVerified, isVerifyingPhone, phoneNumber, verificationError };
-}
-
-export default connect(mapStateToProps, {
-  validatePhoneAction: verificationActions.validatePhone,
-  savePhoneAction: verificationActions.savePhoneToState
-})(WelcomeContainer);
-*/
-
   static navigationOptions = { header: null };
 
   componentDidMount() {
-    //this would come from the navigation props
+    //this ID would come from the navigation props
     this.props.attendeeListLoad(2);
   }
 
