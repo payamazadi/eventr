@@ -42,3 +42,16 @@ export function loadAttendeeListData(eventId) {
     }, 1000);
   });
 }
+
+export function validateTokenService(token) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (token && token === "11111") {
+        resolve("validated");
+      } else {
+        reject(new Error("invalid token"));
+      }
+    }, 1000);
+  });
+}
+>>>>>>> master

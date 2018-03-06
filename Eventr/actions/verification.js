@@ -1,5 +1,6 @@
+import { AsyncStorage } from "react-native";
 import { ACTIONS } from "../shared/actionTypes";
-import { validatePhoneService } from "../services";
+import { validatePhoneService, validateTokenService } from "../services";
 
 function validatePhoneStart() {
   return {
@@ -31,9 +32,6 @@ function validatePhone(phoneNumber) {
     response.then(token => dispatch(validatePhoneSuccess(token))).catch(err => {
       dispatch(validatePhoneFailure(err));
     });
-    // await setTimeout(() => {
-    //   dispatch(validatePhoneSuccess());
-    // }, 1000);
   };
 }
 
@@ -43,25 +41,35 @@ function validateTokenStart() {
   };
 }
 
-function validateTokenSuccess() {
+function validateTokenSuccess(message) {
   return {
-    type: ACTIONS.VALIDATE_TOKEN_SUCCESS
+    type: ACTIONS.VALIDATE_TOKEN_SUCCESS,
+    payload: message
   };
 }
 
-function validateTokenFailure() {
+function validateTokenFailure(err) {
   return {
-    type: ACTIONS.VALIDATE_TOKEN_FAILURE
+    type: ACTIONS.VALIDATE_TOKEN_FAILURE,
+    payload: err
   };
 }
 
-function validateToken(Token) {
-  return async dispatch => {
+function validateToken(token) {
+  return dispatch => {
     dispatch(validateTokenStart());
     //pretending to be async here
-    await setTimeout(() => {
-      dispatch(validateTokenSuccess());
-    }, 1000);
+
+    let response = validateTokenService(token);
+
+    response
+      .then(message => {
+        AsyncStorage.setItem("validated", "true");
+        dispatch(validateTokenSuccess(message));
+      })
+      .catch(err => {
+        dispatch(validateTokenFailure(err));
+      });
   };
 }
 
@@ -72,4 +80,11 @@ function savePhoneToState(phoneNumber) {
   };
 }
 
-export { validatePhone, validateToken, savePhoneToState };
+function saveTokenToState(token) {
+  return {
+    type: ACTIONS.SAVE_TOKEN_TO_STATE,
+    payload: token
+  };
+}
+
+export { validatePhone, validateToken, savePhoneToState, saveTokenToState };

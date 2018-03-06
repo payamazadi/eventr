@@ -1,17 +1,10 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
-import { LinearGradient, Font } from "expo";
-import FontAwesome, { Icons } from "react-native-fontawesome";
-import { Container, Header, Content, Badge } from "native-base";
+import { StyleSheet, View } from "react-native";
+import { LinearGradient } from "expo";
 import { TransparentOverlay } from "wrappers";
 import { Logo } from "common";
-import { PhoneInput, SubmitButton } from "inputs";
-import {
-  TextTitle,
-  TextSubtitle,
-  TextCaptionRegular,
-  TextLinkRegular
-} from "text";
+import { SubmitButton } from "inputs";
+import { TextTitle, TextSubtitle } from "text";
 import { colors } from "shared";
 
 export default class RegistrationComplete extends React.Component {

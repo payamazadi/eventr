@@ -10,11 +10,12 @@ export const ROUTES = {
 export default class NavigationHelper {
   static NAVIGATOR;
 
-  static navigateTo(route) {
+  static navigateTo(route, params = {}) {
     this.NAVIGATOR.dispatch(
       NavigationActions.navigate({
         type: "Navigation/NAVIGATE",
-        routeName: route
+        routeName: route,
+        params
       })
     );
   }
