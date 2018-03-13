@@ -15,7 +15,9 @@ class AttendeeListContainer extends React.Component {
 
   render() {
     return (
-      <AttendeeList attendeeListData={this.props.attendeeListData}/>
+      <AttendeeList
+        {...this.props}
+        attendeeListData={this.props.attendeeListData}/>
     );
   }
 }
@@ -23,12 +25,13 @@ class AttendeeListContainer extends React.Component {
 function mapStateToProps(state) { 
   const {
     attendeeListId,
-    attendeeListData
+    attendeeListData,
+    attendeesInvited
   } = state.attendees;
 
   if(attendeeListData === null)
     return { attendeeListId };
-  return { attendeeListId, attendeeListData };
+  return { attendeeListId, attendeeListData, attendeesInvited };
 }
 
 export default connect(mapStateToProps, {

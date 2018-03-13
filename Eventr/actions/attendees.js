@@ -29,8 +29,7 @@ function attendeeListLoad(eventId) {
     let response = attendeeListLoadData(eventId);
 
     response.then(response => {
-      var payload = {attendeeListId: response.attendeeListId, attendeeListData: response.attendeeListData };
-      dispatch(attendeeListLoadSuccess(payload));
+      dispatch(attendeeListLoadSuccess(response));
     }).catch(err => { dispatch(attendeeListLoadFailure(err))});
   };
 }
