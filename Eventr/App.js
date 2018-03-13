@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import { LinearGradient } from "expo";
+import { LinearGradient, Font } from "expo";
 
 import { StackNavigator, NavigationActions } from "react-navigation";
 import { Provider } from "react-redux";
@@ -26,8 +26,20 @@ const Navigator = StackNavigator({
 });
 
 export default class App extends React.Component {
+  state = { assetsLoaded: false };
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      FontAwesome: require("./assets/fonts/fontawesome-webfont.ttf")
+    });
+
+    this.setState({ assetsLoaded: true });
+  }
+
   render() {
-    return (
+    const { assetsLoaded } = this.state;
+
+    return assetsLoaded ? (
       <Provider store={store}>
         <View colors={colors.gradient} style={styles.gradient}>
           <Navigator
@@ -39,7 +51,7 @@ export default class App extends React.Component {
           <NavigationDrawer />
         </View>
       </Provider>
-    );
+    ) : null; // <--- place holder until we have a loading page
   }
 }
 
