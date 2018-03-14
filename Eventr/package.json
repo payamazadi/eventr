@@ -22,6 +22,7 @@
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
     "expo": "^19.0.0",
+    "luxon": "^0.5.6",
     "native-base": "^2.3.7",
     "prop-types": "^15.6.0",
     "react": "16.0.0-alpha.12",

@@ -3,9 +3,22 @@ import { StyleSheet, View, Image } from "react-native";
 import { LinearGradient } from "expo";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
-import { TransparentOverlay } from "wrappers";
-import { TextTitle, TextHeading1, TextCaptionRegular, TextRegular } from "text";
+import {
+  TransparentOverlay,
+  Header,
+  LabeledContent,
+  TransparentWhiteBox
+} from "wrappers";
+import {
+  TextTitle,
+  TextHeading1,
+  TextCaptionRegular,
+  TextRegular,
+  TextHeading3
+} from "text";
 import { colors } from "shared";
+import { PlusButton, BackButton, SubmitButton, PencilButton } from "inputs";
+import { DateRange } from "common";
 
 export default class EventDisplay extends React.Component {
   static navigationOptions = { header: null };
@@ -18,23 +31,52 @@ export default class EventDisplay extends React.Component {
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
         <View style={styles.container}>
-          <View style={styles.header}>
-            <TextHeading1>
-              <FontAwesome style={{ fontSize: 52 }}>
-                {Icons.chevronCircleLeft}
-              </FontAwesome>
-            </TextHeading1>
+          <Header>
+            <BackButton />
             <TextHeading1>Event</TextHeading1>
-            <View style={styles.addButtonBorder}>
-              <TextHeading1>
-                <FontAwesome style={styles.addButton}>{Icons.plus}</FontAwesome>
-              </TextHeading1>
-            </View>
-          </View>
+            <PlusButton />
+          </Header>
           <View style={styles.body}>
-            <TextHeading1>
-              Beach Trip <TextCaptionRegular>(Private)</TextCaptionRegular>
-            </TextHeading1>
+            <View style={styles.eventTitle}>
+              <TextHeading1>
+                Beach Trip <TextRegular>(Private)</TextRegular>
+              </TextHeading1>
+              <PencilButton />
+            </View>
+            <LabeledContent label={"DESCRIPTION"}>
+              <TextRegular>
+                <FontAwesome>{Icons.listAlt}</FontAwesome> Going to beach with
+                family
+              </TextRegular>
+            </LabeledContent>
+            <LabeledContent label={"LOCATION"}>
+              <TextRegular>
+                <FontAwesome>{Icons.mapMarker}</FontAwesome> Hatteras Island, NC
+              </TextRegular>
+            </LabeledContent>
+            <LabeledContent label={"DATE"}>
+              <DateRange
+                startTime={"2018-03-13T18:12:13-04:00"}
+                endTime={"2018-03-13T22:12:13-04:00"}
+              />
+            </LabeledContent>
+            <TransparentWhiteBox>
+              <TextRegular>Events are fun with a friend</TextRegular>
+              <SubmitButton
+                overwriteStyles={{ width: 122, height: 27, borderRadius: 3 }}
+                filled
+              >
+                Let's Add
+              </SubmitButton>
+            </TransparentWhiteBox>
+            <TransparentWhiteBox>
+              <TextRegular>Lists (0)</TextRegular>
+              <TextRegular>
+                <FontAwesome style={{ fontSize: 20 }}>
+                  {Icons.chevronCircleRight}
+                </FontAwesome>
+              </TextRegular>
+            </TransparentWhiteBox>
           </View>
         </View>
         <TransparentOverlay show={isLoadingEvent} />
@@ -70,17 +112,8 @@ const styles = StyleSheet.create({
   padded: {
     margin: 12
   },
-  addButtonBorder: {
-    borderStyle: "solid",
-    borderWidth: 2,
-    borderColor: colors.linkBlue,
-    borderRadius: 100,
-    padding: 7,
-    paddingLeft: 10,
-    paddingRight: 10
-  },
-  addButton: {
-    color: colors.linkBlue,
-    fontSize: 28
+  eventTitle: {
+    flexDirection: "row",
+    justifyContent: "space-between"
   }
 });
