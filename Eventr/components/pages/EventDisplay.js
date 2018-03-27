@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { LinearGradient } from "expo";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
@@ -9,13 +9,7 @@ import {
   LabeledContent,
   TransparentWhiteBox
 } from "wrappers";
-import {
-  TextTitle,
-  TextHeading1,
-  TextCaptionRegular,
-  TextRegular,
-  TextHeading3
-} from "text";
+import { TextHeading1, TextRegular } from "text";
 import { colors } from "shared";
 import { PlusButton, BackButton, SubmitButton, PencilButton } from "inputs";
 import { DateRange } from "common";

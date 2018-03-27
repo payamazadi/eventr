@@ -5,6 +5,10 @@
     "es6": true,
     "node": true
   },
+  "globals" : {
+    "it": true,
+    "expect": true
+  },
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {

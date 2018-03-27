@@ -1,18 +1,16 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Text } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { TextInputLabel } from "text";
-import {colors} from "shared";
+import { colors } from "shared";
+
 export default props => {
-  
-    return (
-      <View style={styles.container}>
-        <TextInputLabel>{props.label}</TextInputLabel>
-        <TextInput
-          style={styles.textInput}
-        />
-      </View>
-    );
-}
+  return (
+    <View style={styles.container}>
+      <TextInputLabel>{props.label}</TextInputLabel>
+      <TextInput style={styles.textInput} />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

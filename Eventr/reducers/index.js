@@ -7,6 +7,6 @@ import event from "./event";
 export default combineReducers({
   navigation,
   verification,
-  attendees
+  attendees,
   event
 });

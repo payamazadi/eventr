@@ -1,10 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { TextEventDate, TextRegular } from "text";
-import { colors } from "shared";
 import FontAwesome, { Icons } from "react-native-fontawesome";
-
-const DATE_FORMAT = "";
 
 export default props => {
   const { startTime, endTime } = props;

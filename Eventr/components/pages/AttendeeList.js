@@ -20,7 +20,7 @@ export default class AttendeeList extends React.Component {
   static defaultProps = { attendeeListData: [] };
 
   render() {
-    const { attendeeListData, attendeesInvited, style } = this.props;
+    const { attendeeListData, attendeesInvited } = this.props;
 
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
@@ -31,7 +31,7 @@ export default class AttendeeList extends React.Component {
               <Title>test</Title>
             </Body>
             <Right>
-              <Text style={styles.text}>1/4</Text>
+              <Text style={styles.text}>1/{attendeesInvited}</Text>
             </Right>
           </Header>
 

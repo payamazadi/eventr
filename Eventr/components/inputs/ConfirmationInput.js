@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Alert } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 
 export default class ConfirmationInput extends React.Component {
   state = { part1: "", part2: "", part3: "", part4: "" };

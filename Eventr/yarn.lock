@@ -4131,9 +4131,9 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-luxon@^0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-0.5.6.tgz#9b1639d77fa18fbb649079ed3dbf626fa35940ee"
+luxon@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.0.0.tgz#ec1cba8cf53be14d2375c2f17e3468eb195c20bb"
 
 makeerror@1.0.x:
   version "1.0.11"
