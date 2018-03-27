@@ -3,5 +3,5 @@
  */
 
 import Logo from "./Logo";
-
-export { Logo };
+import DateRange from "./DateRange";
+export { Logo, DateRange };
