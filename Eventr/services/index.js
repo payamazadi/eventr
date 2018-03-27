@@ -10,6 +10,39 @@ export function validatePhoneService(phoneNumber) {
   });
 }
 
+export function attendeeListLoadData(eventId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (eventId) {
+        resolve({
+          attendeeListId: eventId,
+          attendeesAttending: 1,
+          attendeesInvited: 3,
+          attendeeListData: [
+            {
+              name: "Brendan Cass",
+              avatar: "brendan.jpg",
+              attending: 1
+            },
+            {
+              name: "Payam Azadi",
+              avatar: "payam.jpg",
+              attending: 2
+            },
+            {
+              name: "Steven Ayers",
+              avatar: "ayers.jpg",
+              attending: 3
+            }
+          ]
+        });
+      } else {
+        reject(new Error("invalid event ID or error"));
+      }
+    }, 1000);
+  });
+}
+
 export function validateTokenService(token) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -17,6 +50,18 @@ export function validateTokenService(token) {
         resolve("validated");
       } else {
         reject(new Error("invalid token"));
+      }
+    }, 1000);
+  });
+}
+
+export function getEventService(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (id) {
+        resolve({ name: "EVENT" });
+      } else {
+        reject(new Error("id invalid or not present"));
       }
     }, 1000);
   });

@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
     "jest-expo": "~19.0.0",
     "prettier": "^1.8.1",
     "react-native-scripts": "1.1.0",
@@ -22,6 +27,7 @@
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
     "expo": "^19.0.0",
+    "luxon": "^1.0.0",
     "native-base": "^2.3.7",
     "prop-types": "^15.6.0",
     "react": "16.0.0-alpha.12",

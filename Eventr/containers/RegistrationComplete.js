@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { RegistrationComplete } from "pages";
-import * as navigationActions from "../actions/navigation";
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 
 class RegistrationCompleteContainer extends React.Component {
@@ -11,7 +10,9 @@ class RegistrationCompleteContainer extends React.Component {
     return (
       <RegistrationComplete
         {...this.props}
-        onSubmit={this.props.openDrawerAction}
+        onSubmit={() => {
+          NavigationHelper.navigateTo(ROUTES.EVENT, { id: 1 });
+        }}
       />
     );
   }

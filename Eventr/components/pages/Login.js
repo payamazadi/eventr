@@ -1,7 +1,6 @@
 import React from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { LinearGradient, Font } from "expo";
-import FontAwesome, { Icons } from "react-native-fontawesome";
 import { Container, Header, Content, Badge } from "native-base";
 
 import {

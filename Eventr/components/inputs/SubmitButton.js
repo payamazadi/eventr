@@ -1,11 +1,19 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { TextSubmitLabel } from "text";
 import { colors } from "shared";
 
 export default props => {
+  const { overwriteStyles } = props;
   return (
-    <TouchableOpacity style={[styles.button, props.filled? styles.button_filled:styles.button_empty]} onPress={props.onPress}>
+    <TouchableOpacity
+      style={[
+        styles.button,
+        props.filled ? styles.button_filled : styles.button_empty,
+        overwriteStyles
+      ]}
+      onPress={props.onPress}
+    >
       <TextSubmitLabel>{props.children}</TextSubmitLabel>
     </TouchableOpacity>
   );

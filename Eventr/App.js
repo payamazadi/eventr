@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
-import { LinearGradient } from "expo";
-
-import { StackNavigator, NavigationActions } from "react-navigation";
+import { Font } from "expo";
+import { StackNavigator } from "react-navigation";
 import { Provider } from "react-redux";
 
 import { configureStore } from "./store";
@@ -11,21 +10,39 @@ import NavigationHelper from "./NavigationHelper";
 import Welcome from "./containers/Welcome";
 import Confirmation from "./containers/Confirmation";
 import RegistrationComplete from "./containers/RegistrationComplete";
-
+import AttendeeList from "./containers/AttendeeList";
+import EventContainer from "./containers/Event";
 import NavigationDrawer from "./containers/NavigationDrawer";
+
+import Home from "./components/pages/Home";
 import { colors } from "shared";
 
-let _navContainer;
 const store = configureStore();
 const Navigator = StackNavigator({
-  Welcome: { screen: Welcome },
   Confirmation: { screen: Confirmation },
-  RegistrationComplete: { screen: RegistrationComplete }
+  Home: { screen: Home },
+  Welcome: { screen: Welcome },
+  AttendeeList: { screen: AttendeeList },
+  
+  RegistrationComplete: { screen: RegistrationComplete },
+  Event: { screen: EventContainer }
 });
 
 export default class App extends React.Component {
+  state = { assetsLoaded: false };
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      FontAwesome: require("./assets/fonts/fontawesome-webfont.ttf")
+    });
+
+    this.setState({ assetsLoaded: true });
+  }
+
   render() {
-    return (
+    const { assetsLoaded } = this.state;
+
+    return assetsLoaded ? (
       <Provider store={store}>
         <View colors={colors.gradient} style={styles.gradient}>
           <Navigator
@@ -37,7 +54,7 @@ export default class App extends React.Component {
           <NavigationDrawer />
         </View>
       </Provider>
-    );
+    ) : null; // <--- place holder until we have a loading page
   }
 }
 

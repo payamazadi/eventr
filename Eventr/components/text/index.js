@@ -13,5 +13,19 @@ import TextSubmitLabel from "./TextSubmitLabel";
 import TextRegular from "./TextRegular";
 import TextLinkRegular from "./TextLinkRegular";
 import TextPageTitle from "./TextPageTitle";
+import TextEventDate from "./TextEventDate";
 
-export { TextTitle, TextSubtitle, TextHeading1, TextHeading2, TextHeading3, TextCaptionRegular, TextInputLabel, TextSubmitLabel, TextRegular, TextLinkRegular, TextPageTitle };
+export {
+  TextEventDate,
+  TextTitle,
+  TextSubtitle,
+  TextHeading1,
+  TextHeading2,
+  TextHeading3,
+  TextCaptionRegular,
+  TextInputLabel,
+  TextSubmitLabel,
+  TextRegular,
+  TextLinkRegular,
+  TextPageTitle
+};
