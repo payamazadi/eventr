@@ -3,7 +3,7 @@ import { attendeeListLoadData } from "../services";
 
 function attendeeListLoadStart() {
   return {
-    type: ACTIONS.ATTENDEE_LIST_LOAD_START,
+    type: ACTIONS.ATTENDEE_LIST_LOAD_START
   };
 }
 
@@ -28,9 +28,13 @@ function attendeeListLoad(eventId) {
 
     let response = attendeeListLoadData(eventId);
 
-    response.then(response => {
-      dispatch(attendeeListLoadSuccess(response));
-    }).catch(err => { dispatch(attendeeListLoadFailure(err))});
+    response
+      .then(response => {
+        dispatch(attendeeListLoadSuccess(response));
+      })
+      .catch(err => {
+        dispatch(attendeeListLoadFailure(err));
+      });
   };
 }
 
