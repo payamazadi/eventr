@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { StyleSheet, View } from "react-native";
-import { colors } from "shared";
-import { TextCaptionRegular, TextRegular } from "text";
+
+import { TextCaptionRegular } from "text";
 
 export default function LabeledContent({ label, children }) {
   return (

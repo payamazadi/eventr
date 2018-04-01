@@ -10,6 +10,7 @@ import SelectInput from "./SelectInput";
 import PlusButton from "./PlusButton";
 import BackButton from "./BackButton";
 import PencilButton from "./PencilButton";
+import DatePicker from "./DatePicker";
 export {
   PhoneInput,
   SubmitButton,
@@ -18,5 +19,6 @@ export {
   SelectInput,
   PlusButton,
   BackButton,
-  PencilButton
+  PencilButton,
+  DatePicker
 };

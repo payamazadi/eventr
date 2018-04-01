@@ -1,18 +1,18 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
 import { TextHeading1 } from "text";
 import { colors } from "shared";
 
 export default props => {
-  const { onClick } = props;
+  const { onPress } = props;
   return (
-    <View style={styles.pencilBorder}>
+    <TouchableOpacity style={styles.pencilBorder} onPress={onPress}>
       <TextHeading1>
         <FontAwesome style={styles.pencil}>{Icons.pencil}</FontAwesome>
       </TextHeading1>
-    </View>
+    </TouchableOpacity>
   );
 };
 
