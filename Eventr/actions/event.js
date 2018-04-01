@@ -1,4 +1,3 @@
-import { AsyncStorage } from "react-native";
 import { ACTIONS } from "../shared/actionTypes";
 import { getEventService } from "../services";
 

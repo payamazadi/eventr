@@ -2,7 +2,6 @@ import React from "react";
 
 import FontAwesome, { Icons } from "react-native-fontawesome";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import * as navigationActions from "../actions/navigation";
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 import { Drawer } from "wrappers";
@@ -22,7 +21,6 @@ class NavigationDrawer extends React.Component {
         <SubmitButton
           onPress={() => {
             this.props.closeDrawerAction();
-            //this.props.navigation.navigate("Login");
             NavigationHelper.navigateTo(ROUTES.WELCOME);
           }}
         >

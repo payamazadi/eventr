@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
-import { LinearGradient, Font } from "expo";
-
-import { StackNavigator, NavigationActions } from "react-navigation";
+import { Font } from "expo";
+import { StackNavigator } from "react-navigation";
 import { Provider } from "react-redux";
 
 import { configureStore } from "./store";
@@ -11,16 +10,20 @@ import NavigationHelper from "./NavigationHelper";
 import Welcome from "./containers/Welcome";
 import Confirmation from "./containers/Confirmation";
 import RegistrationComplete from "./containers/RegistrationComplete";
+import AttendeeList from "./containers/AttendeeList";
 import EventContainer from "./containers/Event";
-
 import NavigationDrawer from "./containers/NavigationDrawer";
+
+import Home from "./components/pages/Home";
 import { colors } from "shared";
 
-let _navContainer;
 const store = configureStore();
 const Navigator = StackNavigator({
-  Welcome: { screen: Welcome },
   Confirmation: { screen: Confirmation },
+  Home: { screen: Home },
+  Welcome: { screen: Welcome },
+  AttendeeList: { screen: AttendeeList },
+  
   RegistrationComplete: { screen: RegistrationComplete },
   Event: { screen: EventContainer }
 });

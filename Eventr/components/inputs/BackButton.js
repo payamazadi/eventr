@@ -3,7 +3,6 @@ import { TouchableOpacity } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
 import { TextHeading1 } from "text";
-import { colors } from "shared";
 
 export default props => {
   const { onPress } = props;

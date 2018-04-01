@@ -1,6 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { StyleSheet, View } from "react-native";
-
 import { TextCaptionRegular } from "text";
 
 export default function LabeledContent({ label, children }) {
