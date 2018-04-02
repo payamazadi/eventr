@@ -1,18 +1,18 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React from "react"; // eslint-disable-line no-unused-vars
+import { StyleSheet, TouchableOpacity } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
 import { TextHeading1 } from "text";
 import { colors } from "shared";
 
 export default props => {
-  const { onClick } = props;
+  const { onPress } = props;
   return (
-    <View style={styles.addButtonBorder}>
+    <TouchableOpacity onPress={onPress} style={styles.addButtonBorder}>
       <TextHeading1>
         <FontAwesome style={styles.addButton}>{Icons.plus}</FontAwesome>
       </TextHeading1>
-    </View>
+    </TouchableOpacity>
   );
 };
 

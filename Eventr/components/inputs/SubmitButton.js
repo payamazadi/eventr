@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { TextSubmitLabel } from "text";
 import { colors } from "shared";

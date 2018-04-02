@@ -1,13 +1,13 @@
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { StyleSheet, TextInput, View } from "react-native";
 import { TextInputLabel } from "text";
 import { colors } from "shared";
-
 export default props => {
+  const { onChange, label } = props;
   return (
     <View style={styles.container}>
-      <TextInputLabel>{props.label}</TextInputLabel>
-      <TextInput style={styles.textInput} />
+      <TextInputLabel>{label}</TextInputLabel>
+      <TextInput onChange={onChange} style={styles.textInput} />
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { StyleSheet, View, Picker, Platform } from "react-native";
 import { TextInputLabel } from "text";
 import { colors } from "shared";

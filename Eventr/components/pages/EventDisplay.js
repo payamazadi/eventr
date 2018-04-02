@@ -17,10 +17,8 @@ import { DateRange } from "common";
 export default class EventDisplay extends React.Component {
   static navigationOptions = { header: null };
 
-  state = { fontLoaded: false };
-
   render() {
-    const { isLoadingEvent, eventData } = this.props;
+    const { isLoadingEvent, eventData, editButtonAction } = this.props;
 
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
@@ -35,7 +33,7 @@ export default class EventDisplay extends React.Component {
               <TextHeading1>
                 Beach Trip <TextRegular>(Private)</TextRegular>
               </TextHeading1>
-              <PencilButton />
+              <PencilButton onPress={editButtonAction} />
             </View>
             <LabeledContent label={"DESCRIPTION"}>
               <TextRegular>

@@ -14,16 +14,15 @@ import AttendeeList from "./containers/AttendeeList";
 import EventContainer from "./containers/Event";
 import NavigationDrawer from "./containers/NavigationDrawer";
 
-import Home from "./components/pages/Home";
 import { colors } from "shared";
 
 const store = configureStore();
 const Navigator = StackNavigator({
-  Confirmation: { screen: Confirmation },
-  Home: { screen: Home },
   Welcome: { screen: Welcome },
+  Confirmation: { screen: Confirmation },
+
   AttendeeList: { screen: AttendeeList },
-  
+
   RegistrationComplete: { screen: RegistrationComplete },
   Event: { screen: EventContainer }
 });

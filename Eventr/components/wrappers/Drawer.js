@@ -31,7 +31,7 @@ export default class Drawer extends React.Component {
     });
 
     return (
-      <Animated.View style={{ ...styles.container, marginLeft:margin }}>
+      <Animated.View style={{ ...styles.container, marginLeft: margin }}>
         <LinearGradient colors={colors.gradient_drawer} style={styles.gradient}>
           {this.props.children}
         </LinearGradient>
