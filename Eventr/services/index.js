@@ -59,7 +59,11 @@ export function getEventService(id) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (id) {
-        resolve({ name: "EVENT" });
+        resolve({
+          name: "EVENT",
+          description: "a fine event",
+          location: "a great place"
+        });
       } else {
         reject(new Error("id invalid or not present"));
       }

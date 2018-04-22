@@ -3,11 +3,16 @@ import { StyleSheet, TextInput, View } from "react-native";
 import { TextInputLabel } from "text";
 import { colors } from "shared";
 export default props => {
-  const { onChange, label } = props;
+  const { onChange, label, placeholder, value } = props;
   return (
     <View style={styles.container}>
       <TextInputLabel>{label}</TextInputLabel>
-      <TextInput onChange={onChange} style={styles.textInput} />
+      <TextInput
+        onChangeText={text => onChange(text)}
+        style={styles.textInput}
+        placeholder={placeholder}
+        value={value}
+      />
     </View>
   );
 };

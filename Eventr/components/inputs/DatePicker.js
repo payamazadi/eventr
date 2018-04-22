@@ -6,21 +6,38 @@ import { View, Text } from "react-native";
 import { colors } from "shared";
 
 export default props => {
-  const { mode, label } = props;
+  const { mode, label, secondLabel } = props;
   return (
-    <View>
-      {label ? (
-        <View style={styles.labelWrapper}>
-          <Text style={styles.label}>{label}</Text>
+    <View style={styles.inputWrapper}>
+      <View>
+        {label ? (
+          <View style={styles.labelWrapper}>
+            <Text style={styles.label}>{label}</Text>
+          </View>
+        ) : null}
+
+        <DatePicker
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={styles}
+          mode={mode}
+          iconComponent={icon(mode)}
+        />
+      </View>
+      {mode === "time" ? (
+        <View>
+          <View style={styles.labelWrapper}>
+            <Text style={styles.label}>{secondLabel}</Text>
+          </View>
+          <DatePicker
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={styles}
+            mode={mode}
+            iconComponent={<View />}
+          />
         </View>
       ) : null}
-      <DatePicker
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        customStyles={styles}
-        mode={mode}
-        iconComponent={icon(mode)}
-      />
     </View>
   );
 };
@@ -62,6 +79,12 @@ const styles = {
   },
   labelWrapper: {
     marginLeft: 36,
-    marginBottom: 4
+
+    height: 20,
+    flexDirection: "column",
+    justifyContent: "flex-end"
+  },
+  inputWrapper: {
+    flexDirection: "row"
   }
 };

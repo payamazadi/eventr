@@ -11,27 +11,44 @@ export default class EventEdit extends React.Component {
   static navigationOptions = { header: null };
 
   render() {
-    const { isLoadingEvent, eventData } = this.props;
+    const { isLoadingEvent, backAction, eventData, onFormChange } = this.props;
 
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
         <View style={styles.container}>
           <Header>
-            <BackButton />
+            <BackButton onPress={backAction} />
             <TextHeading1>Event</TextHeading1>
             <View />
           </Header>
           <View style={styles.body}>
-            <TextInput label={"EVENT NAME"} />
+            <TextInput
+              label={"EVENT NAME"}
+              placeholder={"Name your event"}
+              value={eventData.name}
+              onChange={text => onFormChange({ name: text })}
+            />
 
-            <TextInput label={"DESCRIPTION"} />
+            <TextInput
+              label={"DESCRIPTION"}
+              placeholder={"What's it about"}
+              value={eventData.description}
+            />
 
-            <TextInput label={"LOCATION"} />
+            <TextInput
+              label={"LOCATION"}
+              placeholder={"Event Location"}
+              value={eventData.location}
+            />
 
             <DatePicker mode="date" label={"DATE"} />
-            <DatePicker mode="time" label={"START"} />
+            <DatePicker mode="time" label={"START"} secondLabel={"END"} />
+          </View>
+          <View style={styles.footer}>
+            <SubmitButton filled>Add Event</SubmitButton>
           </View>
         </View>
+
         <TransparentOverlay show={isLoadingEvent} />
       </LinearGradient>
     );
@@ -47,17 +64,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start"
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
-    height: 88,
-    width: "100%",
-    borderBottomWidth: 2,
-    borderStyle: "solid",
-    borderColor: colors.white,
-    marginTop: 16
-  },
   body: { margin: 16 },
   centerText: {
     textAlign: "center"
@@ -68,5 +74,19 @@ const styles = StyleSheet.create({
   eventTitle: {
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+  footer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    height: 88,
+    width: "100%",
+    borderTopWidth: 2,
+    borderStyle: "solid",
+    borderColor: colors.white,
+    marginTop: 16,
+    position: "absolute",
+    bottom: 0,
+    paddingBottom: 10
   }
 });

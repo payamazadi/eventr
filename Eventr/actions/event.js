@@ -40,4 +40,11 @@ function setEventEdit(isEditing) {
   };
 }
 
-export { getEvent, setEventEdit };
+function setEventData(update) {
+  return {
+    type: ACTIONS.SET_EVENT_DATA,
+    payload: update
+  };
+}
+
+export { getEvent, setEventEdit, setEventData };
