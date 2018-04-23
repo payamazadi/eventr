@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { LinearGradient } from "expo";
 
-import { TransparentOverlay, Header } from "wrappers";
+import { TransparentOverlay, Header, FullWidthBorder } from "wrappers";
 import { TextHeading1 } from "text";
 import { colors } from "shared";
 import { BackButton, SubmitButton, TextInput, DatePicker } from "inputs";
@@ -40,10 +40,13 @@ export default class EventEdit extends React.Component {
               placeholder={"Event Location"}
               value={eventData.location}
             />
-
-            <DatePicker mode="date" label={"DATE"} />
-            <DatePicker mode="time" label={"START"} secondLabel={"END"} />
           </View>
+          <FullWidthBorder>
+            <DatePicker label={"STARTS"} />
+          </FullWidthBorder>
+          <FullWidthBorder>
+            <DatePicker label={"ENDS"} />
+          </FullWidthBorder>
           <View style={styles.footer}>
             <SubmitButton filled>Add Event</SubmitButton>
           </View>
