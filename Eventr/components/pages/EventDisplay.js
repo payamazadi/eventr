@@ -7,7 +7,7 @@ import {
   TransparentOverlay,
   Header,
   LabeledContent,
-  TransparentWhiteBox
+  FullWidthBorder
 } from "wrappers";
 import { TextHeading1, TextRegular } from "text";
 import { colors } from "shared";
@@ -52,24 +52,24 @@ export default class EventDisplay extends React.Component {
                 endTime={"2018-03-13T22:12:13-04:00"}
               />
             </LabeledContent>
-            <TransparentWhiteBox>
-              <TextRegular>Events are fun with a friend</TextRegular>
-              <SubmitButton
-                overwriteStyles={{ width: 122, height: 27, borderRadius: 3 }}
-                filled
-              >
-                Let's Add
-              </SubmitButton>
-            </TransparentWhiteBox>
-            <TransparentWhiteBox>
-              <TextRegular>Lists (0)</TextRegular>
-              <TextRegular>
-                <FontAwesome style={{ fontSize: 20 }}>
-                  {Icons.chevronCircleRight}
-                </FontAwesome>
-              </TextRegular>
-            </TransparentWhiteBox>
           </View>
+          <FullWidthBorder customStyles={styles.fullWidthBorderStyle}>
+            <TextRegular>Events are fun with a friend</TextRegular>
+            <SubmitButton
+              overwriteStyles={{ width: 122, height: 27, borderRadius: 3 }}
+              filled
+            >
+              Let's Add
+            </SubmitButton>
+          </FullWidthBorder>
+          <FullWidthBorder customStyles={styles.fullWidthBorderStyle}>
+            <TextRegular>Lists (0)</TextRegular>
+            <TextRegular>
+              <FontAwesome style={{ fontSize: 20 }}>
+                {Icons.chevronCircleRight}
+              </FontAwesome>
+            </TextRegular>
+          </FullWidthBorder>
         </View>
         <TransparentOverlay show={isLoadingEvent} />
       </LinearGradient>
@@ -107,5 +107,10 @@ const styles = StyleSheet.create({
   eventTitle: {
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+  fullWidthBorderStyle: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   }
 });

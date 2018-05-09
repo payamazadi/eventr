@@ -4,7 +4,11 @@ const INITIAL_STATE = {
   isLoadingEvent: false,
   isEditingEvent: false,
   eventLoadingError: null,
-  eventData: null
+  eventData: {
+    name: null,
+    description: null,
+    location: null
+  }
 };
 
 function event(state = INITIAL_STATE, action) {
@@ -23,6 +27,14 @@ function event(state = INITIAL_STATE, action) {
       return {
         ...state,
         isEditingEvent: action.payload
+      };
+    case ACTIONS.SET_EVENT_DATA:
+      return {
+        ...state,
+        eventData: {
+          ...state.eventData,
+          ...action.payload
+        }
       };
     default:
       return state;

@@ -20,6 +20,10 @@ class EventContainer extends React.Component {
         saveAction={() => {
           this.props.setEditingAction(false);
         }}
+        backAction={() => {
+          this.props.setEditingAction(false);
+        }}
+        onFormChange={this.props.setEventDataAction}
       />
     ) : (
       <EventDisplay
@@ -32,6 +36,14 @@ class EventContainer extends React.Component {
   }
 }
 
+EventContainer.defaultProps = {
+  eventData: {
+    name: null,
+    description: null,
+    location: null
+  }
+};
+
 function mapStateToProps(state) {
   const {
     isLoadingEvent,
@@ -39,11 +51,11 @@ function mapStateToProps(state) {
     eventLoadingError,
     eventData
   } = state.event;
-
   return { isLoadingEvent, isEditingEvent, eventLoadingError, eventData };
 }
 
 export default connect(mapStateToProps, {
   getEventAction: eventActions.getEvent,
-  setEditingAction: eventActions.setEventEdit
+  setEditingAction: eventActions.setEventEdit,
+  setEventDataAction: eventActions.setEventData
 })(EventContainer);
