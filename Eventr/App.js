@@ -2,9 +2,13 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Font } from "expo";
 import { StackNavigator } from "react-navigation";
-import { Provider } from "react-redux";
 
-import { configureStore } from "./store";
+import AWSAppSyncClient from "aws-appsync";
+import { Rehydrated } from "aws-appsync-react";
+import { AUTH_TYPE } from "aws-appsync/lib/link/auth-link";
+import { ApolloProvider } from "react-apollo";
+import AppSync from "./AppSync.js";
+
 import NavigationHelper from "./NavigationHelper";
 
 import Welcome from "./containers/Welcome";
@@ -16,15 +20,23 @@ import NavigationDrawer from "./containers/NavigationDrawer";
 
 import { colors } from "shared";
 
-const store = configureStore();
+const client = new AWSAppSyncClient({
+  url: AppSync.graphqlEndpoint,
+  region: AppSync.region,
+  auth: {
+    type: AUTH_TYPE.API_KEY,
+    apiKey: AppSync.apiKey
+  }
+});
+
 const Navigator = StackNavigator({
+  Event: { screen: EventContainer },
   Welcome: { screen: Welcome },
   Confirmation: { screen: Confirmation },
 
   AttendeeList: { screen: AttendeeList },
 
-  RegistrationComplete: { screen: RegistrationComplete },
-  Event: { screen: EventContainer }
+  RegistrationComplete: { screen: RegistrationComplete }
 });
 
 export default class App extends React.Component {
@@ -42,17 +54,19 @@ export default class App extends React.Component {
     const { assetsLoaded } = this.state;
 
     return assetsLoaded ? (
-      <Provider store={store}>
-        <View colors={colors.gradient} style={styles.gradient}>
-          <Navigator
-            style={styles.container}
-            ref={navigatorRef => {
-              NavigationHelper.NAVIGATOR = navigatorRef;
-            }}
-          />
-          <NavigationDrawer />
-        </View>
-      </Provider>
+      <ApolloProvider client={client}>
+        <Rehydrated>
+          <View colors={colors.gradient} style={styles.gradient}>
+            <Navigator
+              style={styles.container}
+              ref={navigatorRef => {
+                NavigationHelper.NAVIGATOR = navigatorRef;
+              }}
+            />
+            <NavigationDrawer />
+          </View>
+        </Rehydrated>
+      </ApolloProvider>
     ) : null; // <--- place holder until we have a loading page
   }
 }
