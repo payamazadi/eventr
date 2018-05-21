@@ -31,26 +31,24 @@ export default class EventDisplay extends React.Component {
           <View style={styles.body}>
             <View style={styles.eventTitle}>
               <TextHeading1>
-                Beach Trip <TextRegular>(Private)</TextRegular>
+                {eventData.name} <TextRegular>(Private)</TextRegular>
               </TextHeading1>
               <PencilButton onPress={editButtonAction} />
             </View>
             <LabeledContent label={"DESCRIPTION"}>
               <TextRegular>
-                <FontAwesome>{Icons.listAlt}</FontAwesome> Going to beach with
-                family
+                <FontAwesome>{Icons.listAlt}</FontAwesome>{" "}
+                {eventData.description}
               </TextRegular>
             </LabeledContent>
             <LabeledContent label={"LOCATION"}>
               <TextRegular>
-                <FontAwesome>{Icons.mapMarker}</FontAwesome> Hatteras Island, NC
+                <FontAwesome>{Icons.mapMarker}</FontAwesome>{" "}
+                {eventData.location}
               </TextRegular>
             </LabeledContent>
             <LabeledContent label={"DATE"}>
-              <DateRange
-                startTime={"2018-03-13T18:12:13-04:00"}
-                endTime={"2018-03-13T22:12:13-04:00"}
-              />
+              <DateRange startTime={eventData.start} endTime={eventData.end} />
             </LabeledContent>
           </View>
           <FullWidthBorder customStyles={styles.fullWidthBorderStyle}>

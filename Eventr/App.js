@@ -11,14 +11,11 @@ import AppSync from "./AppSync.js";
 
 import NavigationHelper from "./NavigationHelper";
 
-import Welcome from "./containers/Welcome";
-import Confirmation from "./containers/Confirmation";
-import RegistrationComplete from "./containers/RegistrationComplete";
-import AttendeeList from "./containers/AttendeeList";
 import EventContainer from "./containers/Event";
-import NavigationDrawer from "./containers/NavigationDrawer";
 
 import { colors } from "shared";
+
+import gql from "graphql-tag";
 
 const client = new AWSAppSyncClient({
   url: AppSync.graphqlEndpoint,
@@ -29,14 +26,25 @@ const client = new AWSAppSyncClient({
   }
 });
 
+// client
+//   .query({
+//     query: gql`
+//       query GetEvent {
+//         getEvent(id: 1) {
+//           id
+//           name
+//           location
+//           description
+//           start
+//           end
+//         }
+//       }
+//     `
+//   })
+//   .then(result => console.log(result));
+
 const Navigator = StackNavigator({
-  Event: { screen: EventContainer },
-  Welcome: { screen: Welcome },
-  Confirmation: { screen: Confirmation },
-
-  AttendeeList: { screen: AttendeeList },
-
-  RegistrationComplete: { screen: RegistrationComplete }
+  Event: { screen: EventContainer }
 });
 
 export default class App extends React.Component {
@@ -63,7 +71,7 @@ export default class App extends React.Component {
                 NavigationHelper.NAVIGATOR = navigatorRef;
               }}
             />
-            <NavigationDrawer />
+            {/* <NavigationDrawer /> */}
           </View>
         </Rehydrated>
       </ApolloProvider>

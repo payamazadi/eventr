@@ -1,7 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
 import { AttendeeList } from "pages";
-import { attendeeListLoad } from "../actions/attendees";
 
 class AttendeeListContainer extends React.Component {
   static navigationOptions = { header: null };
@@ -20,20 +18,3 @@ class AttendeeListContainer extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  const {
-    attendeeListId,
-    attendeeListData,
-    attendeesInvited
-  } = state.attendees;
-
-  if (attendeeListData === null) {
-    return { attendeeListId };
-  }
-  return { attendeeListId, attendeeListData, attendeesInvited };
-}
-
-export default connect(mapStateToProps, {
-  attendeeListLoad: attendeeListLoad
-})(AttendeeListContainer);

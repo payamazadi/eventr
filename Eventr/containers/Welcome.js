@@ -1,8 +1,8 @@
 import React from "react";
 import { AsyncStorage } from "react-native";
-import { connect } from "react-redux";
+
 import { Welcome } from "pages";
-import * as verificationActions from "../actions/verification";
+
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 
 class WelcomeContainer extends React.Component {
@@ -38,19 +38,3 @@ class WelcomeContainer extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  const {
-    isPhoneVerified,
-    isVerifyingPhone,
-    phoneNumber,
-    verificationError
-  } = state.verification;
-
-  return { isPhoneVerified, isVerifyingPhone, phoneNumber, verificationError };
-}
-
-export default connect(mapStateToProps, {
-  validatePhoneAction: verificationActions.validatePhone,
-  savePhoneAction: verificationActions.savePhoneToState
-})(WelcomeContainer);

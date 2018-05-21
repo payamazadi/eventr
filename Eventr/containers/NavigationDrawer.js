@@ -1,8 +1,6 @@
 import React from "react";
 
 import FontAwesome, { Icons } from "react-native-fontawesome";
-import { connect } from "react-redux";
-import * as navigationActions from "../actions/navigation";
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 import { Drawer } from "wrappers";
 
@@ -37,12 +35,3 @@ class NavigationDrawer extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  const { isDrawerOpen } = state.navigation;
-  return { isDrawerOpen };
-}
-
-export default connect(mapStateToProps, {
-  closeDrawerAction: navigationActions.closeDrawer
-})(NavigationDrawer);

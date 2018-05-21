@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
+
 import { Confirmation } from "pages";
-import * as verificationActions from "../actions/verification";
+
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 
 class ConfirmationContainer extends React.Component {
@@ -23,18 +23,3 @@ class ConfirmationContainer extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  const {
-    isTokenVerified,
-    isVerifyingToken,
-    verificationError,
-    token
-  } = state.verification;
-  return { isTokenVerified, isVerifyingToken, verificationError, token };
-}
-
-export default connect(mapStateToProps, {
-  validateTokenAction: verificationActions.validateToken,
-  saveTokenAction: verificationActions.saveTokenToState
-})(ConfirmationContainer);

@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+
 import { RegistrationComplete } from "pages";
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 
@@ -17,5 +17,3 @@ class RegistrationCompleteContainer extends React.Component {
     );
   }
 }
-
-export default connect(null, null)(RegistrationCompleteContainer);
