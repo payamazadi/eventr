@@ -11,7 +11,13 @@ export default class EventEdit extends React.Component {
   static navigationOptions = { header: null };
 
   render() {
-    const { isLoadingEvent, backAction, eventData, onFormChange } = this.props;
+    const {
+      isLoadingEvent,
+      backAction,
+      eventData,
+      onFormChange,
+      saveAction
+    } = this.props;
 
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
@@ -33,22 +39,38 @@ export default class EventEdit extends React.Component {
               label={"DESCRIPTION"}
               placeholder={"What's it about"}
               value={eventData.description}
+              onChange={text => onFormChange({ description: text })}
             />
 
             <TextInput
               label={"LOCATION"}
               placeholder={"Event Location"}
               value={eventData.location}
+              onChange={text => onFormChange({ location: text })}
             />
           </View>
           <FullWidthBorder>
-            <DatePicker label={"STARTS"} />
+            <DatePicker
+              date={eventData.start}
+              label={"STARTS"}
+              onFormChange={date => onFormChange({ start: date })}
+            />
           </FullWidthBorder>
           <FullWidthBorder>
-            <DatePicker label={"ENDS"} />
+            <DatePicker
+              date={eventData.end}
+              label={"ENDS"}
+              onFormChange={date =>
+                onFormChange({
+                  end: date
+                })
+              }
+            />
           </FullWidthBorder>
           <View style={styles.footer}>
-            <SubmitButton filled>Add Event</SubmitButton>
+            <SubmitButton onPress={saveAction} filled>
+              Add Event
+            </SubmitButton>
           </View>
         </View>
 

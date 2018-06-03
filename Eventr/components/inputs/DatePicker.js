@@ -6,15 +6,22 @@ import { TextCaptionRegular } from "text";
 import { colors } from "shared";
 
 export default props => {
-  const { label } = props;
+  const { label, onFormChange, date } = props;
   return (
     <DatePicker
+      date={date}
       mode="datetime"
       iconComponent={<TextCaptionRegular>{label}</TextCaptionRegular>}
       style={{ width: "100%" }}
       customStyles={{
         ...styles
       }}
+      onDateChange={date => {
+        console.log(date);
+        onFormChange(date);
+      }}
+      confirmBtnText="Confirm"
+      cancelBtnText="Cancel"
     />
   );
 };
@@ -31,5 +38,11 @@ const styles = {
     justifyContent: "space-between",
     width: "100%"
   },
-  dateTouch: {}
+  dateTouch: {},
+  btnTextConfirm: {
+    height: 20
+  },
+  btnTextCancel: {
+    height: 20
+  }
 };

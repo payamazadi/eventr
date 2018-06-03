@@ -26,23 +26,6 @@ const client = new AWSAppSyncClient({
   }
 });
 
-// client
-//   .query({
-//     query: gql`
-//       query GetEvent {
-//         getEvent(id: 1) {
-//           id
-//           name
-//           location
-//           description
-//           start
-//           end
-//         }
-//       }
-//     `
-//   })
-//   .then(result => console.log(result));
-
 const Navigator = StackNavigator({
   Event: { screen: EventContainer }
 });
