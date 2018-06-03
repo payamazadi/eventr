@@ -40,6 +40,7 @@
     "react-native": "^0.54.4",
     "react-native-datepicker": "^1.6.0",
     "react-native-fontawesome": "^5.7.0",
-    "react-navigation": "1.5.8"
+    "react-navigation": "1.5.8",
+    "uuid": "^3.2.1"
   }
 }

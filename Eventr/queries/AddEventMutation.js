@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 
 export default gql`
   mutation CreateEvent(
+    $id: ID!
     $name: String!
     $description: String
     $location: String
@@ -10,6 +11,7 @@ export default gql`
   ) {
     createEvent(
       input: {
+        id: $id
         name: $name
         description: $description
         location: $location
@@ -17,6 +19,7 @@ export default gql`
         end: $end
       }
     ) {
+      id
       name
       location
       description

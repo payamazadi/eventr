@@ -19,6 +19,9 @@ export default class EventEdit extends React.Component {
       saveAction
     } = this.props;
 
+    const { name, description, location, start, end } = eventData
+      ? eventData
+      : {};
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
         <View style={styles.container}>
@@ -31,34 +34,34 @@ export default class EventEdit extends React.Component {
             <TextInput
               label={"EVENT NAME"}
               placeholder={"Name your event"}
-              value={eventData.name}
+              value={name}
               onChange={text => onFormChange({ name: text })}
             />
 
             <TextInput
               label={"DESCRIPTION"}
               placeholder={"What's it about"}
-              value={eventData.description}
+              value={description}
               onChange={text => onFormChange({ description: text })}
             />
 
             <TextInput
               label={"LOCATION"}
               placeholder={"Event Location"}
-              value={eventData.location}
+              value={location}
               onChange={text => onFormChange({ location: text })}
             />
           </View>
           <FullWidthBorder>
             <DatePicker
-              date={eventData.start}
+              date={start}
               label={"STARTS"}
               onFormChange={date => onFormChange({ start: date })}
             />
           </FullWidthBorder>
           <FullWidthBorder>
             <DatePicker
-              date={eventData.end}
+              date={end}
               label={"ENDS"}
               onFormChange={date =>
                 onFormChange({
