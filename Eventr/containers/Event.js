@@ -9,6 +9,8 @@ import ADD_EVENT_MUTATION from "../queries/AddEventMutation";
 import { EventDisplay, EventEdit } from "pages";
 import NavigationHelper, { ROUTES } from "../NavigationHelper";
 
+import { View, Text } from "react-native";
+
 const GET_EVENT_FORM_DATA = gql`
   {
     id @client
@@ -26,39 +28,31 @@ export default class EventContainer extends React.Component {
 
   render() {
     const { params } = this.props.navigation.state;
+
     return (
       <Query query={GET_EVENT_FORM_DATA}>
         {({ data: formData, client }) => {
-          console.log(client);
+          if (!formData.id) {
+            client.writeData({ data: { id: uuidv1() } });
+          }
+          console.log(formData);
           return (formData && formData.isEditingEvent) ||
             !params ||
             (params && params.id === null) ? (
             <Mutation mutation={ADD_EVENT_MUTATION}>
               {createEvent => {
-                // if (!formData || formData === {}) {
-                //   console.log("HI");
-                //   client.writeData({
-                //     data: {
-                //       id: uuidv1(),
-                //       name: null,
-                //       description: null,
-                //       location: null
-                //     }
-                //   });
-                // }
                 return (
                   <EventEdit
                     {...this.props}
                     eventData={formData}
                     saveAction={() => {
-                      console.log("HI again");
                       createEvent({
-                        variables: formData,
+                        variables: tempData,
                         optimisticResponse: {
                           __typename: "Mutation",
                           createEvent: {
                             __typename: "Event",
-                            ...formData
+                            ...tempData
                           }
                         }
                       });

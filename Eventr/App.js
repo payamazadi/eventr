@@ -3,10 +3,15 @@ import { StyleSheet, View } from "react-native";
 import { Font } from "expo";
 import { StackNavigator } from "react-navigation";
 
-import AWSAppSyncClient from "aws-appsync";
+import AWSAppSyncClient, {
+  createAppSyncLink,
+  createLinkWithCache
+} from "aws-appsync";
 import { Rehydrated } from "aws-appsync-react";
 import { AUTH_TYPE } from "aws-appsync/lib/link/auth-link";
 import { ApolloProvider } from "react-apollo";
+import { ApolloLink } from "apollo-link";
+import { withClientState } from "apollo-link-state";
 import AppSync from "./AppSync.js";
 
 import NavigationHelper from "./NavigationHelper";
@@ -14,10 +19,16 @@ import NavigationHelper from "./NavigationHelper";
 import EventContainer from "./containers/Event";
 
 import { colors } from "shared";
+import defaultState from "./defaultState";
 
-import gql from "graphql-tag";
+const stateLink = createLinkWithCache(cache =>
+  withClientState({
+    cache,
+    defaults: defaultState
+  })
+);
 
-const client = new AWSAppSyncClient({
+const appSyncLink = createAppSyncLink({
   url: AppSync.graphqlEndpoint,
   region: AppSync.region,
   auth: {
@@ -25,6 +36,10 @@ const client = new AWSAppSyncClient({
     apiKey: AppSync.apiKey
   }
 });
+
+const link = ApolloLink.from([stateLink, appSyncLink]);
+
+const client = new AWSAppSyncClient({}, { link });
 
 const Navigator = StackNavigator({
   Event: { screen: EventContainer }

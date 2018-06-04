@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
+    "apollo-link": "^1.2.2",
+    "apollo-link-state": "^0.4.1",
     "aws-appsync": "^1.0.17",
     "aws-appsync-react": "^1.0.10",
     "aws-sdk": "^2.235.1",
