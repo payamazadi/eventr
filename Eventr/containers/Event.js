@@ -35,24 +35,25 @@ export default class EventContainer extends React.Component {
           if (!formData.id) {
             client.writeData({ data: { id: uuidv1() } });
           }
-          console.log(formData);
+
           return (formData && formData.isEditingEvent) ||
             !params ||
             (params && params.id === null) ? (
             <Mutation mutation={ADD_EVENT_MUTATION}>
-              {createEvent => {
+              {(createEvent, response) => {
+                console.log(response);
                 return (
                   <EventEdit
                     {...this.props}
                     eventData={formData}
                     saveAction={() => {
                       createEvent({
-                        variables: tempData,
+                        variables: formData,
                         optimisticResponse: {
                           __typename: "Mutation",
                           createEvent: {
                             __typename: "Event",
-                            ...tempData
+                            ...formData
                           }
                         }
                       });
