@@ -3,7 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/expo": "^27.0.5",
+    "@types/jest": "^23.1.4",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-native": "^0.55.27",
+    "@types/react-navigation": "^2.0.9",
+    "@types/react-test-renderer": "^16.0.1",
     "babel-eslint": "^8.2.2",
+    "concurrently": "^3.6.0",
     "eslint": "^4.19.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
@@ -11,7 +19,11 @@
     "jest-expo": "^26.0.0",
     "prettier": "^1.8.1",
     "react-native-scripts": "^1.13.1",
-    "react-test-renderer": "16.0.0-alpha.12"
+    "react-test-renderer": "16.0.0-alpha.12",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.0.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -19,7 +31,18 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "lint": "tslint src/**/*.ts",
+    "tsc": "tsc",
+    "clean": "rimraf build",
+    "build": "yarn run clean && yarn run tsc --",
+    "watch": "yarn run build -- -w",
+    "devAndroid": "concurrently \"yarn run watch\" \"yarn run android\"",
+    "buildRunAndroid": "yarn run build && yarn run watchAndRunAndroid ",
+    "devIOS": "concurrently \"yarn run watch\" \"yarn run ios\"",
+    "buildRunIOS": "yarn run build && yarn run watchAndRunIOS ",
+    "dev": "concurrently \"yarn run watch\" \"yarn run start\"",
+    "buildAndStart": "yarn run build && yarn run watchAndStart "
   },
   "jest": {
     "preset": "jest-expo"
@@ -39,6 +62,7 @@
     "react-native-datepicker": "^1.6.0",
     "react-native-fontawesome": "^5.7.0",
     "react-navigation": "1.5.8",
+    "util": "^0.11.0",
     "uuid": "^3.2.1"
   },
   "workspaces": {
