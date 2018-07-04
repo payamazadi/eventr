@@ -16,15 +16,7 @@ import ApolloClient from 'apollo-boost';
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
   clientState: {
-    defaults: {
-      id: null,
-      name: null,
-      description: null,
-      location: null,
-      start: null,
-      end: null,
-      isEditingEvent: null
-    },
+    defaults: {},
     resolvers: {}
   }
 });

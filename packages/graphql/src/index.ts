@@ -1,22 +1,17 @@
 import {ApolloServer, gql} from 'apollo-server';
 
-// This is a (sample) collection of books we'll be able to query
-// the GraphQL server for.  A more complete example might fetch
-// from an existing data source like a REST API or database.
-const event = {
+const events = [{
   name: "Test",
   description: "Test",
   location: "Test",
   start: "2018/06/27",
   end: "2018/06/28"
-}
+}]
 
 // Type definitions define the "shape" of your data and specify
 // which ways the data can be fetched from the GraphQL server.
 const typeDefs = gql`
-  # Comments in GraphQL are defined with the hash (#) symbol.
-
-  # This "Book" type can be used in other type declarations.
+  
   type Event {
     name: String
     description: String
@@ -25,10 +20,16 @@ const typeDefs = gql`
     end: String
   }
 
-  # The "Query" type is the root of all GraphQL queries.
-  # (A "Mutation" type will be covered later on.)
   type Query {
-    event(id: String): Event
+    event(id: Int): Event
+  }
+
+  type Mutation {
+    addEvent(name: String
+    description: String
+    location: String
+    start: String
+    end: String): Event
   }
 `;
 
@@ -36,7 +37,13 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    event: (_, {id}) => event
+    event: (_, {id}) => events[id]
+  },
+  Mutation: {
+    addEvent: (_, {name, description, location, start, end}) => {
+      events.push({ name, description, location, start, end })
+      return ({ name, description, location, start, end })
+    }
   }
 };
 

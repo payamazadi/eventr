@@ -3,23 +3,8 @@ import {Query, Mutation, ApolloConsumer} from 'react-apollo';
 import gql from 'graphql-tag';
 import uuidv1 from 'uuid/v1';
 
-import GET_EVENT_QUERY from '../queries/GetEventQuery';
-import ADD_EVENT_MUTATION from '../queries/AddEventMutation';
-
 import {EventDisplay, EventEdit} from 'pages';
 import NavigationHelper, {ROUTES} from '../NavigationHelper';
-
-const GET_EVENT_FORM_DATA = gql`
-  {
-    id @client
-    name @client
-    description @client
-    location @client
-    start @client
-    end @client
-    isEditingEvent @client
-  }
-`;
 
 export default class EventContainer extends React.Component {
   static navigationOptions = {header: null};
@@ -30,15 +15,18 @@ export default class EventContainer extends React.Component {
       <Query
         query={gql`
           {
-            event {
-              name
-              description
-              location
-              start
-              end
+            getEvent(id: $id) {
+              event($id) {
+                name
+                description
+                location
+                start
+                end
+              }
             }
           }
-        `}>
+        `}
+        variables={{id: 0}}>
         {({data}) => {
           console.log(data);
           const {event = {}} = data;
