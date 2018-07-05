@@ -6,30 +6,24 @@ import {TextCaptionRegular} from '../text/';
 
 import {colors} from '../../shared/';
 
-const DATEPICKER_FORMAT = 'MM-dd-yyyy hh:mm';
+const DATEPICKER_FORMAT = 'MM/dd/yyyy hh:mm a';
 
 export default props => {
   const {label, onFormChange, date} = props;
 
   return (
     <DatePicker
-      date={
-        date
-          ? DateTime.fromISO(date).toFormat(DATEPICKER_FORMAT)
-          : DateTime.local().toFormat(DATEPICKER_FORMAT)
-      }
+      date={date ? DateTime.fromISO(date).toJSDate() : DateTime.local().toJSDate()}
       mode="datetime"
       iconComponent={<TextCaptionRegular>{label}</TextCaptionRegular>}
       style={{width: '100%'}}
-      customStyles={{
-        ...styles
-      }}
+      customStyles={{...styles}}
       format={'MM/DD/YYYY h:mm a'}
       onDateChange={date => {
         const isoDate = DateTime.fromFormat(date, DATEPICKER_FORMAT)
           .toUTC()
           .toISO();
-        console.log(isoDate);
+
         onFormChange(isoDate);
       }}
       confirmBtnText="Confirm"

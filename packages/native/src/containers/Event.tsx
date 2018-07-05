@@ -21,7 +21,7 @@ export default class EventContainer extends React.Component {
 
   render() {
     //const {params} = this.props.navigation.state;
-    const id = 0;
+    const id = 1;
     return (
       <Query
         query={gql`
@@ -38,23 +38,24 @@ export default class EventContainer extends React.Component {
         variables={{id}}>
         {({loading, data}) => {
           const {event = {}} = data;
-          console.log(event);
+
           return (
-            <Formik
-              initialValues={{}}
-              onSubmit={({values, saveEvent}: {values: any; saveEvent(values: any): void}) => {
-                saveEvent(values);
-              }}
-              validate={(values: EventValues) => {
-                let errors: FormikErrors<EventValues> = {};
-                if (!values.name || values.name === '') {
-                  errors.name = 'Required';
-                }
-                return errors;
-              }}>
-              {({values, errors: formErrors, isValid, setFieldValue}) => (
-                <Mutation
-                  mutation={gql`
+            !loading && (
+              <Formik
+                initialValues={{...event}}
+                onSubmit={({values, saveEvent}: {values: any; saveEvent(values: any): void}) => {
+                  saveEvent(values);
+                }}
+                validate={(values: EventValues) => {
+                  let errors: FormikErrors<EventValues> = {};
+                  if (!values.name || values.name === '') {
+                    errors.name = 'Required';
+                  }
+                  return errors;
+                }}>
+                {({values, errors: formErrors, isValid, setFieldValue}) => (
+                  <Mutation
+                    mutation={gql`
                     mutation SaveEvent(
                       $name: String!
                       $description: String
@@ -78,34 +79,35 @@ export default class EventContainer extends React.Component {
                       }
                     }
                   `}>
-                  {(saveEvent, {data: saveData}) => {
-                    const isExistingEvent = event || saveData;
-                    return this.state.mode === MODES.VIEWING && isExistingEvent ? (
-                      <EventDisplay
-                        eventData={saveData ? saveData.saveEvent : event}
-                        loading={loading}
-                        editButtonAction={() => this.setState({mode: MODES.EDITING})}
-                      />
-                    ) : (
-                      <EventEdit
-                        loading={loading}
-                        eventData={saveData ? saveData.saveEvent : event}
-                        onFormChange={(field: string, value: any) =>
-                          setFieldValue(field, value, true)
-                        }
-                        saveAction={() => {
-                          isValid && saveEvent({variables: values});
-                          this.setState({mode: MODES.VIEWING});
-                        }}
-                        backAction={() => this.setState({mode: MODES.VIEWING})}
-                        formErrors={formErrors}
-                        isExistingEvent={isExistingEvent}
-                      />
-                    );
-                  }}
-                </Mutation>
-              )}
-            </Formik>
+                    {(saveEvent, {data: saveData}) => {
+                      const isExistingEvent = event || saveData;
+                      return this.state.mode === MODES.VIEWING && isExistingEvent ? (
+                        <EventDisplay
+                          eventData={saveData ? saveData.saveEvent : event}
+                          loading={loading}
+                          editButtonAction={() => this.setState({mode: MODES.EDITING})}
+                        />
+                      ) : (
+                        <EventEdit
+                          loading={loading}
+                          eventData={values}
+                          onFormChange={(field: string, value: any) =>
+                            setFieldValue(field, value, true)
+                          }
+                          saveAction={() => {
+                            isValid && saveEvent({variables: values});
+                            this.setState({mode: MODES.VIEWING});
+                          }}
+                          backAction={() => this.setState({mode: MODES.VIEWING})}
+                          formErrors={formErrors}
+                          isExistingEvent={isExistingEvent}
+                        />
+                      );
+                    }}
+                  </Mutation>
+                )}
+              </Formik>
+            )
           );
         }}
       </Query>
