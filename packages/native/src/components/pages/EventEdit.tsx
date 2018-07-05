@@ -6,19 +6,38 @@ import {TransparentOverlay, Header, FullWidthBorder} from '../wrappers/';
 import {TextHeading1} from '../text/';
 import {colors} from '../../shared/';
 import {BackButton, SubmitButton, TextInput, DatePicker} from '../inputs/';
+import {EventValues} from '../../containers/Event';
 
-export default class EventEdit extends React.Component {
+interface Props {
+  loading: boolean;
+  backAction(): void;
+  eventData: EventValues;
+  onFormChange(field: string, value: any): void;
+  saveAction(): void;
+  formErrors: any;
+  isExistingEvent: boolean;
+}
+
+export default class EventEdit extends React.Component<Props> {
   static navigationOptions = {header: null};
 
   render() {
-    const {isLoadingEvent, backAction, eventData, onFormChange, saveAction} = this.props;
+    const {
+      loading,
+      backAction,
+      eventData,
+      onFormChange,
+      saveAction,
+      formErrors,
+      isExistingEvent
+    } = this.props;
 
     const {name, description, location, start, end} = eventData ? eventData : {};
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
         <View style={styles.container}>
           <Header>
-            <BackButton onPress={backAction} />
+            {isExistingEvent && <BackButton onPress={backAction} />}
             <TextHeading1>Event</TextHeading1>
             <View />
           </Header>
@@ -27,49 +46,45 @@ export default class EventEdit extends React.Component {
               label={'EVENT NAME'}
               placeholder={'Name your event'}
               value={name}
-              onChange={text => onFormChange({name: text})}
+              onChange={(text: string) => onFormChange('name', text.trim())}
             />
 
             <TextInput
               label={'DESCRIPTION'}
               placeholder={"What's it about"}
               value={description}
-              onChange={text => onFormChange({description: text})}
+              onChange={(text: string) => onFormChange('description', text.trim())}
             />
 
             <TextInput
               label={'LOCATION'}
               placeholder={'Event Location'}
               value={location}
-              onChange={text => onFormChange({location: text})}
+              onChange={(text: string) => onFormChange('location', text.trim())}
             />
           </View>
           <FullWidthBorder>
             <DatePicker
               date={start}
               label={'STARTS'}
-              onFormChange={date => onFormChange({start: date})}
+              onFormChange={(date: string) => onFormChange('start', date)}
             />
           </FullWidthBorder>
           <FullWidthBorder>
             <DatePicker
               date={end}
               label={'ENDS'}
-              onFormChange={date =>
-                onFormChange({
-                  end: date
-                })
-              }
+              onFormChange={(date: string) => onFormChange('end', date)}
             />
           </FullWidthBorder>
           <View style={styles.footer}>
             <SubmitButton onPress={saveAction} filled>
-              Add Event
+              {`${isExistingEvent ? 'Update' : 'Save'} Event`}
             </SubmitButton>
           </View>
         </View>
 
-        <TransparentOverlay show={isLoadingEvent} />
+        <TransparentOverlay show={loading} />
       </LinearGradient>
     );
   }

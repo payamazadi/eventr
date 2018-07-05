@@ -4,8 +4,8 @@ const events = [{
   name: "Test",
   description: "Test",
   location: "Test",
-  start: "2018/06/27",
-  end: "2018/06/28"
+  start: "2018-06-27T04:01:00.000Z",
+  end: "2018-06-27T04:01:00.000Z"
 }]
 
 // Type definitions define the "shape" of your data and specify
@@ -13,7 +13,8 @@ const events = [{
 const typeDefs = gql`
   
   type Event {
-    name: String
+    id: Int!
+    name: String!
     description: String
     location: String
     start: String
@@ -21,15 +22,17 @@ const typeDefs = gql`
   }
 
   type Query {
+    events: [Event]
     event(id: Int): Event
   }
 
   type Mutation {
-    addEvent(name: String
-    description: String
-    location: String
-    start: String
-    end: String): Event
+    saveEvent(id:Int 
+      name: String
+      description: String
+      location: String
+      start: String
+      end: String): Event
   }
 `;
 
@@ -37,13 +40,27 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    event: (_, {id}) => events[id]
+    events: () => events.map((event,id) => ({id, ...event})),
+    event: (_, {id}) => (events[id] && {id, ...events[id]})
   },
   Mutation: {
-    addEvent: (_, {name, description, location, start, end}) => {
-      events.push({ name, description, location, start, end })
-      return ({ name, description, location, start, end })
+    
+    saveEvent: (_, { id, name = "Unnamed Event", description, location, start, end }:{id:string; name:string; description:string; location:string; start: string; end:string}) => {
+      if(events[id])
+      {
+        const updates = { id, name, description, location, start, end };
+        for (let prop in updates) {
+          !updates[prop] && delete updates[prop]
+        }
+        events[id] = { ...events[id], ...updates }
+        return {id, ...events[id]}
+      }
+      else{
+        events.push({ name, description, location, start, end })
+        return { id, ...{ name, description, location, start, end }}
+      }
     }
+      
   }
 };
 

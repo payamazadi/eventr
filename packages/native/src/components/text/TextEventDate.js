@@ -10,7 +10,9 @@ const DATE_FORMAT = {
 };
 
 const TextEventDate = props => {
-  const text = DateTime.fromISO(props.children).toLocaleString(props.dateFormat);
+  const text = props.children
+    ? DateTime.fromISO(props.children).toLocaleString(props.dateFormat)
+    : 'TBD';
 
   return <Text style={styles.text}>{text}</Text>;
 };

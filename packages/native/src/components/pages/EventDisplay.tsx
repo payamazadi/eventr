@@ -8,12 +8,19 @@ import {TextHeading1, TextRegular} from '../text/';
 import {colors} from '../../shared/';
 import {PlusButton, BackButton, SubmitButton, PencilButton} from '../inputs/';
 import {DateRange} from '../common/';
+import {EventValues} from '../../containers/Event';
 
-export default class EventDisplay extends React.Component {
+interface Props {
+  eventData: EventValues;
+  loading: boolean;
+  editButtonAction(): void;
+}
+
+export default class EventDisplay extends React.Component<Props> {
   static navigationOptions = {header: null};
 
   render() {
-    const {isLoadingEvent, eventData, editButtonAction} = this.props;
+    const {loading, eventData, editButtonAction} = this.props;
 
     return (
       <LinearGradient colors={colors.gradient} style={styles.gradient}>
@@ -57,7 +64,7 @@ export default class EventDisplay extends React.Component {
             </TextRegular>
           </FullWidthBorder>
         </View>
-        <TransparentOverlay show={isLoadingEvent} />
+        <TransparentOverlay show={loading} />
       </LinearGradient>
     );
   }
