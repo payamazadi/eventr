@@ -1,0 +1,21 @@
+{
+  "name": "@weaver/graphql",
+  "version": "0.0.1",
+  "description": "graphql api for weaver",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./lib",
+    "build": "tsc",
+    "dev": "DEBUG=true ts-node-dev ./src"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.0.0-rc.4",
+    "graphql": "^0.13.2"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2",
+    "ts-node-dev": "^1.0.0-pre.26",
+    "@types/node": "10.3.4"
+  }
+}
