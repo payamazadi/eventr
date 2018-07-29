@@ -1,11 +1,10 @@
 import React from 'react';
 import {Query, Mutation} from 'react-apollo';
 import gql from 'graphql-tag';
-import uuidv1 from 'uuid/v1';
+
 import {Formik, FormikErrors} from 'formik';
 
 import {EventDisplay, EventEdit} from '../components/pages';
-import NavigationHelper, {ROUTES} from '../NavigationHelper';
 
 export interface EventValues {
   name: String;
