@@ -1,29 +1,13 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Font} from 'expo';
-import {StackNavigator} from 'react-navigation';
 
 import {ApolloProvider} from 'react-apollo';
 
-import NavigationHelper from './NavigationHelper';
-
-import EventContainer from './containers/Event';
-
-import ApolloClient from 'apollo-boost';
+import client from './ApolloClient';
+import {Navigator} from './Navigator';
 
 const fontAwesome = require('../assets/fonts/fontawesome-webfont.ttf');
-
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/',
-  clientState: {
-    defaults: {},
-    resolvers: {}
-  }
-});
-
-const Navigator = StackNavigator({
-  Event: {screen: EventContainer}
-});
 
 export default class App extends React.Component {
   state = {assetsLoaded: false};
@@ -42,16 +26,11 @@ export default class App extends React.Component {
     return assetsLoaded ? (
       <ApolloProvider client={client}>
         <View style={styles.gradient}>
-          <Navigator
-            style={styles.container}
-            ref={navigatorRef => {
-              NavigationHelper.NAVIGATOR = navigatorRef;
-            }}
-          />
+          <Navigator style={styles.container} />
           {/* <NavigationDrawer /> */}
         </View>
       </ApolloProvider>
-    ) : null; // <--- place holder until we have a loading page
+    ) : null; // <--- @todo place holder until we have a loading page
   }
 }
 
