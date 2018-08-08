@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "target": "es6",
     "lib": ["es6", "dom", "esnext"],
+    "typeRoots": ["../node_modules/@types", "node_modules/@types"],
     "sourceMap": true,
     "allowJs": true
   },
