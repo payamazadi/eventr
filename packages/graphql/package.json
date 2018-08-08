@@ -4,7 +4,7 @@
   "description": "graphql api for weaver",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node ./lib",
+    "start": "node ./lib/src",
     "build": "tsc --p ./",
     "dev": "DEBUG=true ts-node-dev ./src",
     "gitPub": "node ./publish.js"
