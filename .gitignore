@@ -2,3 +2,5 @@ node_modules/
 .vscode/
 node_modules/
 build/
+lib/
+lib.zip
