@@ -6,19 +6,19 @@
   "scripts": {
     "start": "node ./lib/src",
     "build": "tsc --p ./",
-    "dev": "DEBUG=true ts-node-dev ./src",
+    "dev": "DEBUG=true GOOGLE_APPLICATION_CREDENTIALS=./weaver-demo-432554c246f9.json ts-node-dev ./src",
     "gitPub": "node ./publish.js"
   },
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/datastore": "^2.0.0",
     "apollo-server": "^2.0.0",
-    "graphql": "^0.13.2",
-    "@google-cloud/datastore": "^2.0.0"
+    "graphql": "^0.13.2"
   },
   "devDependencies": {
     "@types/graphql": "^0.13.4",
     "@types/node": "10.3.4",
     "ts-node-dev": "^1.0.0-pre.26",
-    "typescript": "^2.9.2"
+    "typescript": "^3.1.3"
   }
 }

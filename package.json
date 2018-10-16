@@ -6,7 +6,8 @@
     ]
   },
   "devDependencies": {
-    "prettier": "1.13.5"
+    "prettier": "1.13.5",
+    "tslint": "^5.11.0"
   },
   "prettier": {
     "singleQuote": true,
