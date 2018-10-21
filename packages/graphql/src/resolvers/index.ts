@@ -1,14 +1,16 @@
-import { users } from '../../mockData';
+import {users} from '../../mockData';
 
 import {eventQueries, eventFields, eventMutations} from './event';
-import { userQueries, userMutations} from './user'
+import {userQueries, userMutations} from './user';
+
+import Datastore from '@google-cloud/datastore';
 
 export default {
   Query: {
     ...eventQueries,
     ...userQueries
   },
-  Event:{
+  Event: {
     ...eventFields
   },
   Mutation: {
@@ -17,10 +19,12 @@ export default {
   }
 };
 
-export const contextResolver = ({req}) => {
+export const contextResolver = async ({req}) => {
+  const datastore = new Datastore({});
   const token = req.headers.authorization || '';
+  const results = await datastore.runQuery(
+    datastore.createQuery('User').filter('authToken', '=', token)
+  );
 
-  const user = users.find(user => user.authToken === token);
-
-  return {user};
+  return {user: results[0][0]};
 };

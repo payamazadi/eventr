@@ -11,7 +11,7 @@ class WelcomeContainer extends React.Component<NavigationInjectedProps> {
     phoneNumber: null
   };
   public componentWillMount() {
-    AsyncStorage.removeItem('authorization');
+    // AsyncStorage.removeItem('authorization');
     // AsyncStorage.setItem("validated", "true");
   }
   public componentDidMount() {

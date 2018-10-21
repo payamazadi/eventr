@@ -7,15 +7,15 @@ import Navigation from './Navigation';
 
 import client from './ApolloClient';
 export default class App extends React.Component {
-  state = {assetsLoaded: false};
+  public state = {assetsLoaded: false};
 
-  async componentDidMount() {
+  public async componentDidMount() {
     await Font.loadAsync({Roboto: require('native-base/Fonts/Roboto.ttf')});
 
     this.setState({assetsLoaded: true});
   }
 
-  render() {
+  public render() {
     return this.state.assetsLoaded ? (
       <ApolloProvider client={client}>
         <Navigation />

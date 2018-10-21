@@ -1,8 +1,7 @@
 import React from 'react';
-import {ApolloError} from 'apollo-client';
 import {View, StyleSheet} from 'react-native';
 
-import {H1, H2, Text, Button, Item, Input, Label, Content, Form, Body} from 'native-base';
+import {H1, H2, Text, Button, Icon, Item, Input, Label, Content, Form, Body} from 'native-base';
 
 import Page from '../Page';
 import Logo from '../Logo';
