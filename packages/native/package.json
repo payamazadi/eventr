@@ -11,8 +11,8 @@
     "lint": "tslint src/**/*.ts",
     "tsc": "tsc",
     "clean": "rimraf build",
-    "build": "yarn run clean && yarn run tsc --",
-    "watch": "yarn run build -- -w",
+    "build": "yarn run clean && yarn run tsc",
+    "watch": "yarn run build -w",
     "dev": "concurrently \"yarn run watch\" \"yarn run start\""
   },
   "dependencies": {

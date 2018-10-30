@@ -1,6 +1,48 @@
 import {events, users} from '../../mockData';
 import { AuthenticationError } from 'apollo-server';
 
+const Datastore = require('@google-cloud/datastore');
+const datastore = new Datastore({});
+
+function queryHelper(query) {
+  datastore
+    .runQuery(query)
+    .then(results => {
+      results = results[0];
+      return results[0];
+    })
+    .catch(err => {
+      console.error('ERROR:', err);
+    });
+}
+
+function addEvent(id="", name, description, location, start, end) {
+    const event = {
+        key: datastore.key(['Event']),
+        data: {
+            name: name,
+            description: description,
+            location: location,
+            start:start,
+            end:end
+        },
+    };
+
+    if(id !== "") {
+        console.log("this id" + id);
+        event.key = datastore.key(['Event', id]);
+    }
+
+    // Saves the entity
+    datastore
+      .save(event)
+      .then(() => {
+        console.log(`Saved ${event.key.id}: ${event.data.description}`);
+      })
+      .catch(err => {
+        console.error('ERROR:', err);
+    });
+}
 export const eventQueries = {
     events: (_, { }, { user }) =>
         user
@@ -34,20 +76,11 @@ export const eventMutations ={
             },
         { user }
     ) => {
-        if (events[id]) {
-            const event = events[id]
-            if (event.author !== user.phoneNumber) {
-                throw new AuthenticationError('cannot edit another user\'s event without permission')
-            }
-            const updates = { id, name, description, location, start, end };
-            for (let prop in updates) {
-                !updates[prop] && delete updates[prop];
-            }
-            events[id] = { ...event, ...updates };
-            return { id, ...event };
-        } else {
-            events.push({ name, description, location, start, end, author: user.phoneNumber });
-            return { id, ...{ name, description, location, start, end } };
+        if(id === undefined) {
+            addEvent("", name, description+"lolwut", location, start, end );
+        } else { 
+            //TODO: need to make sure we can pull the proper ID back out to send it in for the update..
+            addEvent(id, name, description, location, start, end );
         }
     }
 }
