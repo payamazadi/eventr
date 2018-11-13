@@ -16,7 +16,7 @@ function queryHelper(query) {
     });
 }
 
-function addEvent(id="", name, description, location, start, end) {
+function addEvent(id=0, name, description, location, start, end) {
     const event = {
         key: datastore.key(['Event']),
         data: {
@@ -28,8 +28,7 @@ function addEvent(id="", name, description, location, start, end) {
         },
     };
 
-    if(id !== "") {
-        console.log("this id" + id);
+    if(id !== 0) {
         event.key = datastore.key(['Event', id]);
     }
 
@@ -67,7 +66,7 @@ export const eventMutations ={
             start,
             end
         }: {
-                id: string;
+                id: number;
                 name: string;
                 description: string;
                 location: string;
@@ -77,10 +76,9 @@ export const eventMutations ={
         { user }
     ) => {
         if(id === undefined) {
-            addEvent("", name, description+"lolwut", location, start, end );
-        } else { 
-            //TODO: need to make sure we can pull the proper ID back out to send it in for the update..
-            addEvent(id, name, description, location, start, end );
+            id = 0;    
         }
+        
+        addEvent(id, name, description, location, start, end );
     }
 }
