@@ -1,6 +1,5 @@
 import uuidv1 from 'uuid/v1';
 
-import {users} from '../../mockData';
 import {AuthenticationError} from 'apollo-server';
 
 // is this the right way to do this?..

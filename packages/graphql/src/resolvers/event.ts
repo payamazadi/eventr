@@ -1,4 +1,4 @@
-import {events, users} from '../../mockData';
+import { events } from '../../mockData';
 import { AuthenticationError } from 'apollo-server';
 
 const Datastore = require('@google-cloud/datastore');
@@ -16,9 +16,10 @@ function queryHelper(query) {
     });
 }
 
-function addEvent(id=0, name, description, location, start, end) {
+function addEvent(id=0, user, name, description, location, start, end) {
+
     const event = {
-        key: datastore.key(['Event']),
+        key: datastore.key(['User', user, 'Event' ]),
         data: {
             name: name,
             description: description,
@@ -52,7 +53,11 @@ export const eventQueries = {
 }
 
 export const eventFields = {
-    author: event => users.find(u => u.phoneNumber === event.author)
+    // author: event => users.find(u => u.phoneNumber === event.author)
+    author: event => {
+        console.log("a");
+        return queryHelper(datastore.createQuery('User').filter('phoneNumber', '=', event.author));
+    }
 }
 
 export const eventMutations ={
@@ -79,6 +84,7 @@ export const eventMutations ={
             id = 0;    
         }
         
-        addEvent(id, name, description, location, start, end );
+        //TODO: replace this hardcoded phone number with the user's id/phone
+        addEvent(id, "2406209238", name, description, location, start, end );
     }
 }
