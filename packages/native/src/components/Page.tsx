@@ -63,9 +63,7 @@ const Page = ({navigation, title, children, hideNavigation}: Props) => {
       <StyleProvider style={getTheme(material)}>
         <Container style={styles.container}>
           <Header style={styles.header}>
-            {hideNavigation ? (
-              ''
-            ) : (
+            {hideNavigation ? null : (
               <>
                 <Left>
                   <Button transparent>

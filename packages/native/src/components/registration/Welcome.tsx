@@ -22,18 +22,19 @@ export default ({phone, handleChange, handleSubmit}: Props) => {
     <Page title="welcome" hideNavigation>
       <View style={styles.content}>
         <Logo />
-        <H1>Welcome To Weaver</H1>
-        <H2 style={{textAlign: 'center'}}>It's easy to start, just enter your phone number</H2>
-        <Text>(we are sending you an SMS to verify you)</Text>
+        <H1>Welcome to Weaver</H1>
+        <H2 style={{textAlign: 'center'}}>Linking your events for a better experience</H2>
         <Br />
         <Item regular floatingLabel>
           <Label style={{color: 'white'}}>Phone Number</Label>
           <Input onChangeText={handleChange} value={phone} />
         </Item>
         <Br />
+        <Text>(we are sending you an SMS to verify you)</Text>
+        <Br />
         <View>
-          <Button warning onPress={handleSubmit}>
-            <Text>Sign Up</Text>
+          <Button warning onPress={handleSubmit} rounded>
+            <Text>SIGN UP FOR WEAVER</Text>
           </Button>
         </View>
       </View>

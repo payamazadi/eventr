@@ -17,8 +17,8 @@ export default ({handleSubmit}) => {
         <Br />
 
         <View>
-          <Button warning onPress={handleSubmit}>
-            <Text>Next</Text>
+          <Button warning onPress={handleSubmit} rounded>
+            <Text>NEXT</Text>
           </Button>
         </View>
       </View>

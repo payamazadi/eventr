@@ -4,7 +4,7 @@ import {withNavigation, NavigationInjectedProps} from 'react-navigation';
 
 import AuthenticateUser from '../mutations/AuthenticateUser';
 import Confirmation from './Confirmation';
-import {PATHS} from '../../Navigation';
+import {PATHS} from '../../Paths';
 
 // import { navigateTo, ROUTES } from '../Navigator';
 

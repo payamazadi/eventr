@@ -1,6 +1,6 @@
 import React from 'react';
 import {withNavigation, NavigationInjectedProps} from 'react-navigation';
-import {PATHS} from '../../Navigation';
+import {PATHS} from '../../Paths';
 import RegistrationComplete from './RegistrationComplete';
 import CreateEventModalContainer from '../CreateEventModalContainer';
 interface Props {

@@ -22,7 +22,9 @@ export default ({visible, handleCancel, handleCreate, handleChange}: Props) => (
       <Br />
       <Br />
       <Item regular floatingLabel>
-        <Label style={{backgroundColor: 'white', padding: 4}}>Event Name</Label>
+        <Label style={{backgroundColor: 'white', padding: 4}}>
+          <Text>Event Name</Text>
+        </Label>
         <Input style={{color: 'black'}} onChangeText={handleChange} />
       </Item>
       <Br />

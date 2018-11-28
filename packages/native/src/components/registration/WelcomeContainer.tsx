@@ -3,7 +3,7 @@ import {AsyncStorage} from 'react-native';
 import {withNavigation, NavigationInjectedProps} from 'react-navigation';
 
 import RegisterUser from '../mutations/RegisterUser';
-import {PATHS} from '../../Navigation';
+import {PATHS} from '../../Paths';
 import Welcome from './Welcome';
 
 class WelcomeContainer extends React.Component<NavigationInjectedProps> {
@@ -11,7 +11,7 @@ class WelcomeContainer extends React.Component<NavigationInjectedProps> {
     phoneNumber: null
   };
   public componentWillMount() {
-    // AsyncStorage.removeItem('authorization');
+    AsyncStorage.removeItem('authorization');
     // AsyncStorage.setItem("validated", "true");
   }
   public componentDidMount() {
@@ -47,7 +47,6 @@ class WelcomeContainer extends React.Component<NavigationInjectedProps> {
                 }
               }}
               handleChange={text => {
-                console.log(text);
                 this.setState({phoneNumber: text});
               }}
             />

@@ -124,13 +124,13 @@ export default {
   fontFamily: 'Roboto',
   fontSizeBase: 15,
   get fontSizeH1() {
-    return this.fontSizeBase * 1.8;
+    return 34;
   },
   get fontSizeH2() {
-    return this.fontSizeBase * 1.6;
+    return 20;
   },
   get fontSizeH3() {
-    return this.fontSizeBase * 1.4;
+    return 12;
   },
 
   // Footer
@@ -175,7 +175,7 @@ export default {
 
   // InputGroup
   inputFontSize: 17,
-  inputBorderColor: '#D9D5DC',
+  inputBorderColor: 'transparent',
   inputSuccessBorderColor: '#2b8339',
   inputErrorBorderColor: '#ed2f2f',
   inputHeightBase: 50,

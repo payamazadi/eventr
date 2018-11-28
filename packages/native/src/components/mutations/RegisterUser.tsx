@@ -7,7 +7,7 @@ type RenderCallback = (args: RenderProps) => React.ReactNode;
 export interface RenderProps {
   loading: boolean;
   error?: ApolloError;
-  registerUser({variables: {phoneNumber}}): Promise<any>;
+  registerUser(registerUserInput: {variables: {phoneNumber: string}}): Promise<any>;
   called: boolean;
 }
 
