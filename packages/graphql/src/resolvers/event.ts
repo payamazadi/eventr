@@ -19,7 +19,8 @@ function queryHelper(query) {
 function addEvent(id=0, user, name, description, location, start, end) {
 
     const event = {
-        key: datastore.key(['User', user, 'Event' ]),
+        //TODO: shouldn't have to use user.phoneNumber as key..or convert it from int to string..
+        key: datastore.key(['User', user.phoneNumber.toString(), 'Event' ]),
         data: {
             name: name,
             description: description,
@@ -55,7 +56,6 @@ export const eventQueries = {
 export const eventFields = {
     // author: event => users.find(u => u.phoneNumber === event.author)
     author: event => {
-        console.log("a");
         return queryHelper(datastore.createQuery('User').filter('phoneNumber', '=', event.author));
     }
 }
@@ -81,10 +81,10 @@ export const eventMutations ={
         { user }
     ) => {
         if(id === undefined) {
-            id = 0;    
+            id = 0;
         }
         
         //TODO: replace this hardcoded phone number with the user's id/phone
-        addEvent(id, "2406209238", name, description, location, start, end );
+        addEvent(id, user, name, description, location, start, end );
     }
 }
