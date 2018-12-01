@@ -1,22 +1,8 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
-import { View, Text } from 'react-native';
+import {storiesOf} from '@storybook/react-native';
+import {Text} from 'react-native';
+import {AppDecorator} from '../decorators';
 
-const style = {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-};
-
-const CenteredView = ({ children }) => <View style={style}>{children}</View>;
-
-storiesOf('CenteredView', module).add(
-    'default view',
-    () => (
-        <CenteredView>
-            <Text>Hello Other Thing </Text>
-        </CenteredView>
-    ),
-    { info: 'Some text' }
-);
+storiesOf('test', module)
+  .addDecorator(AppDecorator)
+  .add('default view', () => <Text>Hello Other Thing </Text>);

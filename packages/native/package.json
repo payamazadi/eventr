@@ -13,8 +13,8 @@
     "clean": "rimraf build",
     "build": "yarn run clean && yarn run tsc",
     "watch": "yarn run build -w",
-    "dev": "concurrently \"yarn run watch\" \"yarn run start\"",
-    "storybook": "storybook start -p 9001"
+    "prestorybook": "rnstl",
+    "storybook": "MODE=storybook expo start"
   },
   "dependencies": {
     "apollo-boost": "^0.1.10",
@@ -53,6 +53,7 @@
     "@types/storybook__react": "^4.0.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "babel-preset-expo": "^5.0.0",
     "babel-runtime": "^6.26.0",
     "concurrently": "^4.0.1",
@@ -61,7 +62,7 @@
     "prop-types": "^15.6.2",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "16.3.1",
-    "react-native-dotenv": "^0.2.0",
+    "react-native-storybook-loader": "^1.8.0",
     "rimraf": "^2.6.2",
     "ts-jest": "^23.10.5",
     "tslint": "^5.11.0",
@@ -76,5 +77,15 @@
     "bracketSpacing": false,
     "jsxBracketSameLine": true,
     "printWidth": 100
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./storybook/stories",
+        "./packages"
+      ],
+      "pattern": "**/*.story.tsx",
+      "outputFile": "./storybook/storyLoader.js"
+    }
   }
 }
