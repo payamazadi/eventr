@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {withNavigation, NavigationInjectedProps} from 'react-navigation';
 import {
   StyleProvider,
   Container,
@@ -51,13 +50,13 @@ const renderTab = ({tab, isActive}) => (
   <FullTab isActive={isActive} key={tab.key} label={tab.label} renderIcon={renderIcon(tab.icon)} />
 );
 
-interface Props extends NavigationInjectedProps {
+interface Props {
   title?: string;
   children: React.ReactElement<any> | Array<React.ReactElement<any>>;
   hideNavigation?: boolean;
 }
 
-const Page = ({navigation, title, children, hideNavigation}: Props) => {
+const Page = ({title, children, hideNavigation}: Props) => {
   return (
     <>
       <StyleProvider style={getTheme(material)}>
@@ -67,7 +66,7 @@ const Page = ({navigation, title, children, hideNavigation}: Props) => {
               <>
                 <Left>
                   <Button transparent>
-                    <Icon name="arrow-back" />
+                    <Icon name='arrow-back' />
                   </Button>
                 </Left>
                 <Body>
@@ -96,4 +95,4 @@ const styles = {
   gradient: {zIndex: 0, position: 'absolute', top: 0, left: 0, height: '100%', width: '100%'}
 };
 
-export default withNavigation(Page);
+export default Page;

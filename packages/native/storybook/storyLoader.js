@@ -6,13 +6,13 @@
 
 function loadStories() {
   require('./stories/ConfirmationInput.story');
-  require('./stories/test.story');
+  require('./stories/Welcome.story');
   
 }
 
 const stories = [
   './stories/ConfirmationInput.story',
-  './stories/test.story',
+  './stories/Welcome.story',
   
 ];
 

@@ -1,16 +1,26 @@
 import * as React from 'react';
-import getTheme from '../../src/components/native-base-theme/components';
-import material from '../../src/components/native-base-theme/variables/material';
-import {StyleProvider, Container} from 'native-base';
-import {LinearGradient} from 'expo';
+import Page from '../../src/components/Page';
+import {Container} from 'native-base';
+import {Font, AppLoading} from 'expo';
+
+class AsyncFontLoader extends React.Component {
+  public state = {assetsLoaded: false};
+  public async componentDidMount() {
+    await Font.loadAsync({Roboto: require('native-base/Fonts/Roboto.ttf')});
+
+    this.setState({assetsLoaded: true});
+  }
+  public render() {
+    return this.state.assetsLoaded ? <>{this.props.children}</> : <AppLoading />;
+  }
+}
 
 export const AppDecorator = storyFn => (
-  <>
-    <StyleProvider style={getTheme(material)}>
+  <AsyncFontLoader>
+    <Page hideNavigation>
       <Container style={styles.container}>{storyFn()}</Container>
-    </StyleProvider>
-    <LinearGradient style={styles.gradient} colors={['#3023AE', '#5B38B9', '#C86DD7']} />
-  </>
+    </Page>
+  </AsyncFontLoader>
 );
 
 const styles = {
