@@ -24,6 +24,7 @@ export default class ConfirmationInput extends React.Component<Props> {
     for (let i = 1; i <= tokenLength; i++) {
       tokenInputs.push(
         <TextInput
+          maxLength={1}
           key={`input${i}`}
           ref={`input${i}`}
           keyboardType='numeric'
