@@ -14,7 +14,8 @@
     "build": "yarn run clean && yarn run tsc",
     "watch": "yarn run build -w",
     "prestorybook": "rnstl",
-    "storybook": "MODE=storybook expo start"
+    "storybook": "MODE=storybook expo start",
+    "storybook-server": "storybook start"
   },
   "dependencies": {
     "apollo-boost": "^0.1.10",
