@@ -15,6 +15,8 @@ class AsyncFontLoader extends React.Component {
   }
 }
 
+export const FontDecorator = storyFn => <AsyncFontLoader>{storyFn()}</AsyncFontLoader>;
+
 export const AppDecorator = storyFn => (
   <AsyncFontLoader>
     <Page hideNavigation>
