@@ -3,12 +3,6 @@ import Welcome from './components/registration/WelcomeContainer';
 import Confirmation from './components/registration/ConfirmationContainer';
 import RegistrationComplete from './components/registration/RegistrationCompleteContainer';
 
-export enum PATHS {
-  Welcome = 'Welcome',
-  Confirmation = 'Confirmation',
-  RegistrationComplete = 'RegistrationComplete'
-}
-
 export default createStackNavigator(
   {
     Welcome: {

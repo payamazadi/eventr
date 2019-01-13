@@ -7,7 +7,7 @@ type RenderCallback = (args: RenderProps) => React.ReactNode;
 export interface RenderProps {
   loading: boolean;
   error?: ApolloError;
-  createEvent({variables: {name}}): Promise<any>;
+  createEvent(createEventInput: {variables: {name: string}}): Promise<any>;
   called: boolean;
 }
 

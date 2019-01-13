@@ -21,8 +21,10 @@ export default ({visible, handleCancel, handleCreate, handleChange}: Props) => (
       </View>
       <Br />
       <Br />
-      <Item regular floatingLabel>
-        <Label style={{backgroundColor: 'white', padding: 4}}>Event Name</Label>
+      <Item floatingLabel underline>
+        <Label style={{padding: 4}}>
+          <Text style={{color: 'black'}}>Event Name</Text>
+        </Label>
         <Input style={{color: 'black'}} onChangeText={handleChange} />
       </Item>
       <Br />
@@ -30,7 +32,7 @@ export default ({visible, handleCancel, handleCreate, handleChange}: Props) => (
         <Button warning transparent onPress={handleCancel}>
           <Text>CANCEL</Text>
         </Button>
-        <Button warning>
+        <Button warning rounded>
           <Text style={{color: 'white'}} onPress={handleCreate}>
             CREATE
           </Text>

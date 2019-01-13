@@ -21,8 +21,8 @@ export default ({handleChange, handleSubmit, token}: Props) => {
     <Page hideNavigation>
       <View style={styles.content}>
         <Logo />
-        <H1>Almost There</H1>
-        <H2>Enter confirmation code</H2>
+        <H2>Almost There</H2>
+        <H2>Enter Confirmation Code</H2>
         <Br />
         <Item regular floatingLabel>
           <Label style={{color: 'white'}}>Confirmation Code</Label>
@@ -30,8 +30,8 @@ export default ({handleChange, handleSubmit, token}: Props) => {
         </Item>
         <Br />
         <View>
-          <Button warning onPress={handleSubmit}>
-            <Text>Confirm</Text>
+          <Button warning onPress={handleSubmit} rounded>
+            <Text>CONFIRM</Text>
           </Button>
         </View>
       </View>
