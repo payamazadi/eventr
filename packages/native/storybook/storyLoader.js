@@ -10,6 +10,7 @@ function loadStories() {
   require('./stories/CreateEventModal.story');
   require('./stories/DashboardTile.story');
   require('./stories/RegistrationComplete.story');
+  require('./stories/SearchBar.story');
   require('./stories/Welcome.story');
   
 }
@@ -20,6 +21,7 @@ const stories = [
   './stories/CreateEventModal.story',
   './stories/DashboardTile.story',
   './stories/RegistrationComplete.story',
+  './stories/SearchBar.story',
   './stories/Welcome.story',
   
 ];
