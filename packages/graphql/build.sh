@@ -1,5 +1,5 @@
 #!/bin/sh
-docker stop $(docker ps -q --filter ancestor=weaver)
+docker kill $(docker ps -q --filter ancestor=weaver)
 
 docker build -t weaver .
 
