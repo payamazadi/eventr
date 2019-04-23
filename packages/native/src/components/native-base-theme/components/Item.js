@@ -128,7 +128,7 @@ export default (variables /*: * */ = variable) => {
         borderColor: variables.inputErrorBorderColor
       },
       borderWidth: 1,
-
+      borderRadius: 4,
       borderColor: 'black'
     },
     '.regular': {

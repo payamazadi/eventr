@@ -6,4 +6,4 @@ import {Text, Alert} from 'react-native';
 
 storiesOf('SearchBar', module)
   .addDecorator(AppDecorator)
-  .add('standard', () => <SearchBar />);
+  .add('standard', () => <SearchBar value='' onChangeText={() => {}} />);
