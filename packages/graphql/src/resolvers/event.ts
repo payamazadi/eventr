@@ -50,7 +50,35 @@ export const eventQueries = {
             ? events.map((event, id) => ({ id, ...event }))
             : new AuthenticationError('must authenticate'),
     event: (_, { id }, { user }) =>
-        user ? events[id] && { id, ...events[id] } : new AuthenticationError('must authenticate')
+    {
+        // user
+        //     ? events[id] && { id, ...events[id] }
+        //     : new AuthenticationError('must authenticate')
+        // var x = queryHelper(datastore.createQuery('Event').filter('__key__', '=', datastore.key(['User', '2406209238', 'Event', '5668600916475904' ]) ));
+
+
+
+
+
+
+        const key = datastore.key(['User', 2406209238, 'Event', 5668600916475904 ]);
+        // var x = datastore.get(key).then(results => {console.log(results);});
+        // console.log("x: " + x);
+        // if(user) {
+        //     console.log("wtf");
+        //     return x[0][0];
+        // } else {
+        //     return new AuthenticationError('must authenticate');
+        // }
+
+
+        var x = datastore.get(key).then(results => {
+            console.log(results[0]);
+            return results;
+        });
+
+        return x.resolve();
+    }
 }
 
 export const eventFields = {

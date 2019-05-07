@@ -19,10 +19,14 @@ const typeDefs = gql`
     end: String
     author: User
   }
+  type List {
+    id: Int!
+  }
   type Query {
     events: [Event]
     event(id: Int): Event
     user(authToken: String): User
+    list(id: Int): List
   }
   type Mutation {
     saveEvent(

@@ -12,6 +12,7 @@ ADD . /graphql
 #RUN apk add git
 WORKDIR /graphql
 
+ENV GOOGLE_APPLICATION_CREDENTIALS="weaver-demo-432554c246f9.json"
 #RUN yarn install && yarn build
 RUN yarn build
 EXPOSE 4000
