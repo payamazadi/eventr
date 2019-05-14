@@ -16,17 +16,18 @@ function queryHelper(query) {
     });
 }
 
-function addEvent(id=0, user, name, description, location, start, end) {
+async function addEvent(id=0, user, name, description, location, start, end) {
 
     const event = {
-        //TODO: shouldn't have to use user.phoneNumber as key..or convert it from int to string..
-        key: datastore.key(['User', user.phoneNumber.toString(), 'Event' ]),
+        // key: datastore.key(['User', user.phoneNumber.toString(), 'Event' ]),
+        key: datastore.key('Event'),
         data: {
             name: name,
             description: description,
             location: location,
             start:start,
-            end:end
+            end:end,
+            author: user.phoneNumber
         },
     };
 
@@ -34,50 +35,32 @@ function addEvent(id=0, user, name, description, location, start, end) {
         event.key = datastore.key(['Event', id]);
     }
 
-    // Saves the entity
-    datastore
-      .save(event)
-      .then(() => {
-        console.log(`Saved ${event.key.id}: ${event.data.description}`);
-      })
-      .catch(err => {
-        console.error('ERROR:', err);
-    });
+    await datastore.save(event);
+
+    return { id: event.key.id, ...event.data };
 }
 export const eventQueries = {
     events: (_, { }, { user }) =>
         user
             ? events.map((event, id) => ({ id, ...event }))
             : new AuthenticationError('must authenticate'),
-    event: (_, { id }, { user }) =>
+    event: async (_, { id }, { user }) =>
     {
         // user
         //     ? events[id] && { id, ...events[id] }
         //     : new AuthenticationError('must authenticate')
         // var x = queryHelper(datastore.createQuery('Event').filter('__key__', '=', datastore.key(['User', '2406209238', 'Event', '5668600916475904' ]) ));
 
+        if (!user) {
+            return new AuthenticationError('must authenticate');
+        }
 
+        const key = datastore.key(['User', user.phoneNumber, 'Event', 5668600916475904 ]);
+        const data = await datastore.get(key);
+        const ret = data[0];
 
-
-
-
-        const key = datastore.key(['User', 2406209238, 'Event', 5668600916475904 ]);
-        // var x = datastore.get(key).then(results => {console.log(results);});
-        // console.log("x: " + x);
-        // if(user) {
-        //     console.log("wtf");
-        //     return x[0][0];
-        // } else {
-        //     return new AuthenticationError('must authenticate');
-        // }
-
-
-        var x = datastore.get(key).then(results => {
-            console.log(results[0]);
-            return results;
-        });
-
-        return x.resolve();
+        console.log(ret);
+        return {id: id, ...ret};
     }
 }
 
@@ -89,11 +72,12 @@ export const eventFields = {
 }
 
 export const eventMutations ={
-    saveEvent: (
+    saveEvent: async (
         _,
         {
             id,
             name = 'Unnamed Event',
+            author,
             description,
             location,
             start,
@@ -101,6 +85,7 @@ export const eventMutations ={
         }: {
                 id: number;
                 name: string;
+                author: number;
                 description: string;
                 location: string;
                 start: string;
@@ -108,11 +93,16 @@ export const eventMutations ={
             },
         { user }
     ) => {
+        if(!user) { 
+            return new AuthenticationError('must authenticate');
+        }
         if(id === undefined) {
             id = 0;
         }
         
         //TODO: replace this hardcoded phone number with the user's id/phone
-        addEvent(id, user, name, description, location, start, end );
+        var x = await addEvent(id, user, name, description, location, start, end );
+        console.log("Added " + x);
+        return x;
     }
 }

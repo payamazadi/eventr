@@ -11,7 +11,7 @@ const typeDefs = gql`
     lastName: String
   }
   type Event {
-    id: Int
+    id: ID
     name: String!
     description: String
     location: String
@@ -24,13 +24,13 @@ const typeDefs = gql`
   }
   type Query {
     events: [Event]
-    event(id: Int): Event
+    event(id: ID): Event
     user(authToken: String): User
     list(id: Int): List
   }
   type Mutation {
     saveEvent(
-      id: Int
+      id: ID
       name: String
       description: String
       location: String
