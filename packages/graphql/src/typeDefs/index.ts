@@ -5,7 +5,7 @@ import {gql} from 'apollo-server';
 const typeDefs = gql`
   type User {
     authToken: String!
-    registrationToken: Int!
+    registrationToken: String!
     phoneNumber: String!
     firstName: String
     lastName: String
@@ -37,8 +37,8 @@ const typeDefs = gql`
       start: String
       end: String
     ): Event
-    registerUser(phoneNumber: String!): Boolean
-    authenticateUser(phoneNumber: String!, registrationToken: String!): String
+    registerUser(phoneNumber: String!): User
+    tokenizeUser(phoneNumber: String!, registrationToken: String!): User
   }
 `;
 

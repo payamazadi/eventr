@@ -18,7 +18,7 @@ function queryHelper(query) {
     });
 }
 
-function addUser(phoneNumber, registrationToken, authToken = '') {
+async function addUser(phoneNumber, registrationToken, authToken = '') {
   const userKey = datastore.key(['User', phoneNumber]);
   const entity = {
     key: userKey,
@@ -29,61 +29,35 @@ function addUser(phoneNumber, registrationToken, authToken = '') {
     }
   };
 
-  datastore
-    .save(entity)
-    .then(() => {
-      console.log(
-        `User ${phoneNumber} w reg token ${registrationToken} and auth token ${authToken} created successfully.`
-      );
-    })
-    .catch(err => {
-      console.error('ERROR:', err);
-    });
+  await datastore.save(entity);
+  console.log(`User ${phoneNumber} w reg token ${registrationToken} and auth token ${authToken} and phone ${phoneNumber} created successfully.`);
+  //getting the phone number was a pain
+  return { ...entity.data, "phoneNumber": entity.data.phoneNumber.value };
+  
 }
 
-// export const userQueries = {
-//     user: (_, { }, { user }) => {
-//         // user
-//         //     ?
-//         //
-//         //     :
-//         console.log(typeof(user));
-//         console.log(user);
-//         if(user){
-//             console.log(user.authToken);
-//             return queryHelper(datastore.createQuery('User').filter('authToken', '=', user.authToken));
-//         } else {
-//             return new AuthenticationError('must authenticate');
-//         }
-//     }
-// }
 export const userQueries = {
   user: (_, {}, {user}) => (user ? user : new AuthenticationError('must authenticate'))
 };
 
 export const userMutations = {
-  registerUser: (_, {phoneNumber}) => {
+  registerUser: async (_, {phoneNumber}) => {
     const registrationToken = '' + (Math.floor(Math.random() * 90000) + 10000);
     //addUser uses .save which is an upsert. So we don't need to check if the user exists already and treat it differently.
-    addUser(phoneNumber, registrationToken);
-    //@todo have this send an SMS to the phone number rather than logging the token here
-    return true;
+    return await addUser(phoneNumber, registrationToken);
   },
-  authenticateUser: (_, {phoneNumber, registrationToken}) => {
+
+  tokenizeUser: async (_, {phoneNumber, registrationToken}) => {
     const user = queryHelper(
       datastore
         .createQuery('User')
         .filter('phoneNumber', '=', phoneNumber)
         .filter('registrationToken', '=', 'registrationToken')
     );
-    // Index = users.findIndex(
-    //     user => user.phoneNumber === phoneNumber && user.registrationToken === registrationToken
-    // );
 
     if (user !== null) {
       const authToken = uuidv1(); //@todo use a better version of uuid here
-      addUser(phoneNumber, '', authToken);
-      return authToken;
+      return await addUser(phoneNumber, registrationToken, authToken);
     } else {
       throw new AuthenticationError('invalid registration token');
     }
