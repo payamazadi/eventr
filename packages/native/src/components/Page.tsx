@@ -23,21 +23,21 @@ import material from './native-base-theme/variables/material';
 const tabs = [
   {
     key: 'games',
-    icon: 'ios-alarm-outline',
+    icon: 'ios-alarm',
     label: 'Games',
     barColor: '#3023AE',
     pressColor: 'rgba(255, 255, 255, 0.16)'
   },
   {
     key: 'movies-tv',
-    icon: 'ios-alarm-outline',
+    icon: 'ios-alarm',
     label: 'Movies & TV',
     barColor: '#5B38B9',
     pressColor: 'rgba(255, 255, 255, 0.16)'
   },
   {
     key: 'music',
-    icon: 'ios-alarm-outline',
+    icon: 'ios-alarm',
     label: 'Music',
     barColor: '#C86DD7',
     pressColor: 'rgba(255, 255, 255, 0.16)'
@@ -66,11 +66,11 @@ const Page = ({title, children, hideNavigation}: Props) => {
               <>
                 <Left>
                   <Button transparent>
-                    <Icon name='arrow-back' />
+                    <Icon name='arrow-back' style={{fontSize: 40}} />
                   </Button>
                 </Left>
-                <Body>
-                  <Title style={styles.text}>{title}</Title>
+                <Body style={styles.headerBody}>
+                  <Text style={[styles.text, styles.title]}>{title}</Text>
                 </Body>
                 <Right />
               </>
@@ -89,8 +89,10 @@ const Page = ({title, children, hideNavigation}: Props) => {
 
 const styles = {
   text: {color: 'white'},
+  title: {fontSize: 24},
+  headerBody: {width: 50},
   container: {marginTop: 20, zIndex: 1, flex: 1, backgroundColor: 'transparent'},
-  header: {backgroundColor: 'transparent', borderBottomColor: 'transparent'},
+  header: {backgroundColor: 'transparent', borderBottomColor: 'transparent', marginBottom: 8},
   bottomNavigation: {zIndex: 1, height: 80, paddingBottom: 20},
   gradient: {zIndex: 0, position: 'absolute', top: 0, left: 0, height: '100%', width: '100%'}
 };
